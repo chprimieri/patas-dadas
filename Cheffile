@@ -1,0 +1,10 @@
+site "http://community.opscode.com/api/v1"
+
+cookbook 'apt'
+cookbook 'build-essential'
+# cookbook 'nodejs', '~> 6.0.0'
+cookbook 'vim'
+
+cookbook 'ruby_rbenv'
+cookbook 'yarn'
+# cookbook 'freetds'
