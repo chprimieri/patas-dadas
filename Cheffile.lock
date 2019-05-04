@@ -1,0 +1,24 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    apt (7.1.1)
+    build-essential (8.2.1)
+      mingw (>= 1.1)
+      seven_zip (>= 0.0.0)
+    mingw (2.1.0)
+      seven_zip (>= 0.0.0)
+    ruby_rbenv (2.1.2)
+    seven_zip (3.1.0)
+      windows (>= 0.0.0)
+    vim (2.0.2)
+    windows (6.0.0)
+    yarn (0.4.2)
+      apt (>= 0.0.0)
+
+DEPENDENCIES
+  apt (>= 0)
+  build-essential (>= 0)
+  ruby_rbenv (>= 0)
+  vim (>= 0)
+  yarn (>= 0)
+

@@ -13,10 +13,6 @@ Vagrant.configure(2) do |config|
     vb.cpus = 2
   end
 
-  config.proxy.http = 'http://lproxycmpa.cmpa.local:3128'
-  config.proxy.https = 'http://lproxycmpa.cmpa.local:3128'
-  config.proxy.no_proxy = 'localhost,127.0.0.1,10.25.1.33,10.25.1.34'
-
   # Forward the Rails server default port to the host
   config.vm.network :forwarded_port, guest: 3000, host: 3000, auto_correct: true
   config.vm.network :forwarded_port, guest: 3035, host: 3035, auto_correct: true # para auto-refresh de assets sem precisar dar F5
@@ -32,9 +28,6 @@ Vagrant.configure(2) do |config|
 
   # Pasta compartilhada para acessar as engines
   # config.vm.synced_folder "../engines/", "/engines"
-
-  # Configura git pra não usar protocolo git://, apenas https:// (nosso proxy não permite protocolo git)
-  config.vm.provision :file, source: ".gitconfig", destination: ".gitconfig"
 
   # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|

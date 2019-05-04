@@ -1,0 +1,10 @@
+/log/*.log
+/tmp
+/test/*
+/doc/*
+/public/system/*
+*.log
+
+.vagrant/
+/cookbooks
+/.bundle
