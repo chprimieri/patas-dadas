@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Nome:
+  = @pessoa.nome
+p
+  strong Data de nascimento:
+  = @pessoa.data_de_nascimento
+p
+  strong Email:
+  = @pessoa.email
+p
+  strong Telefone:
+  = @pessoa.telefone
+p
+  strong Foto:
+  = @pessoa.foto
+
+=> link_to 'Edit', edit_pessoa_path(@pessoa)
+'|
+=< link_to 'Back', pessoas_path

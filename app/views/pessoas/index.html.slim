@@ -1,0 +1,29 @@
+h1 Listing pessoas
+
+table
+  thead
+    tr
+      th Nome
+      th Data de nascimento
+      th Email
+      th Telefone
+      th Foto
+      th
+      th
+      th
+
+  tbody
+    - @pessoas.each do |pessoa|
+      tr
+        td = pessoa.nome
+        td = pessoa.data_de_nascimento
+        td = pessoa.email
+        td = pessoa.telefone
+        td = pessoa.foto
+        td = link_to 'Show', pessoa
+        td = link_to 'Edit', edit_pessoa_path(pessoa)
+        td = link_to 'Destroy', pessoa, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Pessoa', new_pessoa_path

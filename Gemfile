@@ -55,4 +55,4 @@ end
 # More gems
 gem 'slim-rails'
 gem 'recaptcha'
-gem 'bootstrap', '~> 4.0'
+gem 'bootstrap', '~> 4.3.1'

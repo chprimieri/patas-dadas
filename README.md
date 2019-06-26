@@ -9,8 +9,9 @@ INSTALAÇÃO
 		Oracle VM VirtualBox 5.2.18
 		Vagrant 2.1.5
 
-	Plugin do Chef:
+	Plugins do Vagrant:
 		vagrant plugin install vagrant-librarian-chef-nochef
+		vagrant plugin install vagrant-vbguest
 
 	Clonar repositório git:
 		git clone https://github.com/chprimieri/patas-dadas.git
@@ -20,7 +21,7 @@ INSTALAÇÃO
 		git config --global user.email "gandalf@grey.cat"
 
 	Levantar a VM:
-		cd patasdadas
+		cd patas-dadas
 		vagrant up
 		vagrant ssh
 
