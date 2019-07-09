@@ -1,1 +1,1 @@
-json.array! @pessoas, partial: 'pessoas/pessoa', as: :pessoa
+json.array! @pessoas, partial: "pessoas/pessoa", as: :pessoa

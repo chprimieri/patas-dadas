@@ -6,19 +6,20 @@
         - @pessoa.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :nome
-    = f.text_field :nome
-  .field
-    = f.label :data_de_nascimento
-    = f.datetime_select :data_de_nascimento
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :telefone
-    = f.text_field :telefone
-  .field
-    = f.label :foto
-    = f.text_field :foto
-  .actions = f.submit
+  .form-group
+    .field
+      = f.label :nome
+      = f.text_field :nome
+    .field
+      = f.label :data_de_nascimento
+      = f.date_select :data_de_nascimento
+    .field
+      = f.label :email
+      = f.text_field :email
+    .field
+      = f.label :telefone
+      = f.text_field :telefone
+    .field
+      = f.label :foto
+      = f.text_field :foto
+    .actions = f.submit
