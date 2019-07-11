@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :passeios
   resources :cachorros
 	get 'home/index'
   root 'home#index'

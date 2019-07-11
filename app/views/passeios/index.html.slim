@@ -1,0 +1,27 @@
+h1 Listing passeios
+
+table
+  thead
+    tr
+      th Pessoa
+      th Cachorro
+      th Status
+      th Data e hora
+      th
+      th
+      th
+
+  tbody
+    - @passeios.each do |passeio|
+      tr
+        td = passeio.pessoa
+        td = passeio.cachorro
+        td = passeio.status
+        td = passeio.data_e_hora
+        td = link_to 'Show', passeio
+        td = link_to 'Edit', edit_passeio_path(passeio)
+        td = link_to 'Destroy', passeio, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Passeio', new_passeio_path

@@ -1,0 +1,21 @@
+= form_for @passeio do |f|
+  - if @passeio.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@passeio.errors.count, "error")} prohibited this passeio from being saved:"
+      ul
+        - @passeio.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :pessoa
+    = f.text_field :pessoa
+  .field
+    = f.label :cachorro
+    = f.text_field :cachorro
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :data_e_hora
+    = f.datetime_select :data_e_hora
+  .actions = f.submit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190711021604) do
+ActiveRecord::Schema.define(version: 20190711114452) do
 
   create_table "cachorros", force: :cascade do |t|
     t.string   "nome"
@@ -28,6 +28,47 @@ ActiveRecord::Schema.define(version: 20190711021604) do
     t.boolean  "disponivel_para_passeio"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "canis", force: :cascade do |t|
+    t.integer  "cachorro_id"
+    t.string   "corredor"
+    t.integer  "numero"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["cachorro_id"], name: "index_canis_on_cachorro_id"
+  end
+
+  create_table "manutencoes", force: :cascade do |t|
+    t.integer  "pessoa_id"
+    t.integer  "canil_id"
+    t.string   "status"
+    t.datetime "data_e_hora"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["canil_id"], name: "index_manutencoes_on_canil_id"
+    t.index ["pessoa_id"], name: "index_manutencoes_on_pessoa_id"
+  end
+
+  create_table "passeios", force: :cascade do |t|
+    t.integer  "pessoa_id"
+    t.integer  "cachorro_id"
+    t.string   "status"
+    t.datetime "data_e_hora"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["cachorro_id"], name: "index_passeios_on_cachorro_id"
+    t.index ["pessoa_id"], name: "index_passeios_on_pessoa_id"
+  end
+
+  create_table "permissoes", force: :cascade do |t|
+    t.integer  "pessoa_id"
+    t.boolean  "administracao"
+    t.boolean  "passeio"
+    t.boolean  "turno"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["pessoa_id"], name: "index_permissoes_on_pessoa_id"
   end
 
   create_table "pessoas", force: :cascade do |t|

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pessoa: one
+  canil: one
+  status: MyString
+  data_e_hora: 2019-07-11 11:44:52
+
+two:
+  pessoa: two
+  canil: two
+  status: MyString
+  data_e_hora: 2019-07-11 11:44:52

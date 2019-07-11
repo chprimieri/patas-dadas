@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Pessoa:
+  = @passeio.pessoa
+p
+  strong Cachorro:
+  = @passeio.cachorro
+p
+  strong Status:
+  = @passeio.status
+p
+  strong Data e hora:
+  = @passeio.data_e_hora
+
+=> link_to 'Edit', edit_passeio_path(@passeio)
+'|
+=< link_to 'Back', passeios_path
