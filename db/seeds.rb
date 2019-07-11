@@ -33,13 +33,47 @@ Faker::Config.locale = 'pt-BR'
 #                   disponivel_para_passeio: Faker::Boolean.boolean)
 # end
 
-Passeio.destroy_all
+# p "Criados #{Cachorro.count} cachorros"
 
-200.times do |index|
-  Passeio.create!( pessoa_id: Faker::Number.between(1, 50),
-                  cachorro_id: Faker::Number.between(1, 50),
-                  status: Faker::Subscription.status,
-                  data_e_hora: Faker::Time.between(DateTime.now - 30, DateTime.now + 30))
-end
+# Passeio.destroy_all
 
-p "Criados #{Passeio.count} passeios"
+# 200.times do |index|
+#   Passeio.create!( pessoa_id: Faker::Number.between(1, 50),
+#                   cachorro_id: Faker::Number.between(1, 50),
+#                   status: Faker::Subscription.status,
+#                   data_e_hora: Faker::Time.between(DateTime.now - 30, DateTime.now + 30))
+# end
+
+# p "Criados #{Passeio.count} passeios"
+
+# Permissao.destroy_all
+
+# 50.times do |index|
+#   Permissao.create!( pessoa_id: Faker::Number.unique.between(1, 50),
+#                   administracao: Faker::Boolean.boolean,
+#                   passeio: Faker::Boolean.boolean,
+#                   turno: Faker::Boolean.boolean)
+# end
+
+# p "Criadas #{Permissao.count} permissões"
+
+# Canil.destroy_all
+
+# 50.times do |index|
+#   Canil.create!( cachorro_id: Faker::Number.unique.between(1, 50),
+#                 corredor: 'A',
+#                 numero: Faker::Number.between(1, 10))
+# end
+
+# p "Criados #{Canil.count} canis"
+
+# Manutencao.destroy_all
+
+# 100.times do |index|
+#   Manutencao.create!( pessoa_id: Faker::Number.between(1, 50),
+#                 canil_id: Faker::Number.between(1, 50),
+#                 status: Faker::Subscription.status,
+#                 data_e_hora: Faker::Time.between(DateTime.now - 30, DateTime.now + 30))
+# end
+
+# p "Criadas #{Manutencao.count} manutenções"
