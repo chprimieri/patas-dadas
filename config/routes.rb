@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :passeios
-  resources :cachorros
 	get 'home/index'
   root 'home#index'
-  
+
+  resources :passeios
+  resources :cachorros
   resources :pessoas
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

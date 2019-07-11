@@ -14,25 +14,7 @@ html
 		      = image_tag 'patasdadas-header-logo.png', alt: 'Voluntários - Patas Dadas'
 
 		   	.right.menu
-		      .ui.simple.dropdown.item
-		        | Pessoas
-		        i.dropdown.icon
-		        .menu
-		          /= link_to 'Unidades Organizacionais', dominio.unidades_organizacionais_path, class: :item
-		          /= link_to 'Organograma', main_app.organograma_unidades_organizacionais_path, class: :item
-		      .ui.simple.dropdown.item
-		        | Cachorros
-		        i.dropdown.icon
-		        .menu
-		          /= link_to 'Pessoal', dominio.pessoas_path, class: :item
-		          /= link_to 'Cargos', dominio.cargos_path, class: :item
-		          /= link_to 'Classes de Cargos', dominio.classes_de_cargos_path, class: :item
-		          /= link_to 'FGs', dominio.funcoes_gratificadas_path, class: :item
-		          /= link_to 'Chefias', dominio.chefias_path, class: :item
-		      .ui.simple.dropdown.item
-		        | Passeios
-		        i.dropdown.icon
-		        .menu
-		          /= link_to 'Sistemas', main_app.sistemas_path, class: :item
-		          /= link_to 'Funcionalidades', autenticacao.funcionalidades_path, class: :item if perfil_logado.tem_permissao_para? :gerenciar_funcionalidades
+		   	  = link_to 'Pessoas', pessoas_path, class: 'ui simple item'
+		   	  = link_to 'Cachorros', cachorros_path, class: 'ui simple item'
+		   	  = link_to 'Passeios', passeios_path, class: 'ui simple item'
     = yield
