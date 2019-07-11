@@ -24,12 +24,12 @@ Cachorro.destroy_all
   								data_de_nascimento: Faker::Date.birthday(0, 15),
                   sexo: Faker::Creature::Dog.gender,
                   porte: Faker::Creature::Dog.size,
-                  # status: Faker::Creature::Dog.status,
+                  status: Faker::Subscription.status,
                   observacoes: Faker::Lorem.paragraph,
-                  # equipamento: Faker::Name::Dog.equipamento,
+                  equipamento: Faker::Hipster.word,
                   frequencia: Faker::Number.between(3, 5),
                   duracao: Faker::Number.between(30, 60),
-                  # areas: Faker::Name::Dog.areas,
+                  areas: Faker::Address.community,
                   disponivel_para_passeio: Faker::Boolean.boolean)
 end
 

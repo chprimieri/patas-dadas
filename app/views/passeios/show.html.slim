@@ -1,18 +1,19 @@
-p#notice = notice
+.ui.container
+	p#notice = notice
 
-p
-  strong Pessoa:
-  = @passeio.pessoa
-p
-  strong Cachorro:
-  = @passeio.cachorro
-p
-  strong Status:
-  = @passeio.status
-p
-  strong Data e hora:
-  = @passeio.data_e_hora
+	p
+	  strong Pessoa:
+	  = @passeio.pessoa
+	p
+	  strong Cachorro:
+	  = @passeio.cachorro
+	p
+	  strong Status:
+	  = @passeio.status
+	p
+	  strong Data e hora:
+	  = @passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
 
-=> link_to 'Edit', edit_passeio_path(@passeio)
-'|
-=< link_to 'Back', passeios_path
+	=> link_to 'Editar', edit_passeio_path(@passeio)
+	'|
+	=< link_to 'Voltar', passeios_path

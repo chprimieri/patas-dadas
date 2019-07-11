@@ -1,7 +1,7 @@
 = form_for @cachorro, html: { class: 'ui form' } do |f|
   - if @cachorro.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@cachorro.errors.count, "error")} prohibited this cachorro from being saved:"
+      h2 = "#{pluralize(@pessoa.errors.count, "erro")} impediu a gravação desse registro:"
       ul
         - @cachorro.errors.full_messages.each do |message|
           li = message

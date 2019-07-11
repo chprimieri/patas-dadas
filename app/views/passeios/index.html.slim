@@ -1,27 +1,26 @@
-h1 Listing passeios
-
-table
-  thead
-    tr
-      th Pessoa
-      th Cachorro
-      th Status
-      th Data e hora
-      th
-      th
-      th
-
-  tbody
-    - @passeios.each do |passeio|
+.ui.container
+  h1 Lista de Passeios
+  br
+  table.ui.very.basic.collapsing.selectable.table
+    thead
       tr
-        td = passeio.pessoa
-        td = passeio.cachorro
-        td = passeio.status
-        td = passeio.data_e_hora
-        td = link_to 'Show', passeio
-        td = link_to 'Edit', edit_passeio_path(passeio)
-        td = link_to 'Destroy', passeio, data: { confirm: 'Are you sure?' }, method: :delete
+        th Pessoa
+        th Cachorro
+        th Status
+        th Data e hora
+        th
 
-br
+    tbody
+      - @passeios.each do |passeio|
+        tr
+          td = passeio.pessoa
+          td = passeio.cachorro
+          td = passeio.status
+          td = passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
+          td
+            = link_to 'Editar', edit_passeio_path(passeio), class: 'ui mini button'
+            = link_to 'Excluir', passeio, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 
-= link_to 'New Passeio', new_passeio_path
+  br
+
+  = link_to 'Cadastrar Novo Passeio', new_passeio_path, class: 'ui small button'

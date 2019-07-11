@@ -1,21 +1,23 @@
-= form_for @passeio do |f|
+= form_for @passeio, html: { class: 'ui form' } do |f|
   - if @passeio.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@passeio.errors.count, "error")} prohibited this passeio from being saved:"
+      h2 = "#{pluralize(@pessoa.errors.count, "erro")} impediu a gravação desse registro:"
       ul
         - @passeio.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :pessoa
-    = f.text_field :pessoa
-  .field
-    = f.label :cachorro
-    = f.text_field :cachorro
-  .field
-    = f.label :status
-    = f.text_field :status
-  .field
-    = f.label :data_e_hora
-    = f.datetime_select :data_e_hora
-  .actions = f.submit
+  .fields
+    .field
+      = f.label :pessoa
+      = f.text_field :pessoa
+    .field
+      = f.label :cachorro
+      = f.text_field :cachorro
+  .fields
+    .field
+      = f.label :status
+      = f.select :status, options_for_select(['agendado', 'realizado', 'cancelado'])
+    .field
+      = f.label :data_e_hora
+      = f.datetime_field :data_e_hora
+  = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }

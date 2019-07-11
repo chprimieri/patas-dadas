@@ -695,7 +695,3 @@ pt-BR:
     gender:
       types: ["Feminino", "Masculino", "Não Binário", "Agênero", "Gênero Fluido", "Gênero queer", "Bigênero", "Poligênero"]
       binary_types: ["Feminino", "Masculino"]
-    dog:
-      status: ["disponível", "indisponível"]
-      equipamento: ["coleira", "peitoral", "enforcador"]
-      areas: ["todas", "apenas ruas", "apenas locais calmos"]
