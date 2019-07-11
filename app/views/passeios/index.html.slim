@@ -13,8 +13,8 @@
     tbody
       - @passeios.each do |passeio|
         tr
-          td = passeio.pessoa
-          td = passeio.cachorro
+          td = passeio.pessoa.nome
+          td = passeio.cachorro.nome
           td = passeio.status
           td = passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
           td
