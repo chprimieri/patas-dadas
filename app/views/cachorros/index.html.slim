@@ -1,0 +1,46 @@
+.ui.container
+  h1 Cachorros do Patas Dadas
+  br
+  table.ui.very.basic.collapsing.selectable.table
+    thead
+      tr
+        th Nome
+        th Data de nascimento
+        th Sexo
+        th Porte
+        / th Foto
+        / th Status
+        / th Observações
+        / th Equipamento
+        / th Dupla
+        th Frequência
+        th Duração
+        / th Áreas
+        th Passeio
+        / th
+        th
+
+    tbody
+      - @cachorros.each do |cachorro|
+        tr
+          td = cachorro.nome
+          td = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
+          td = cachorro.sexo
+          td = cachorro.porte
+          / td = cachorro.foto
+          / td = cachorro.status
+          / td = cachorro.observacoes
+          / td = cachorro.equipamento
+          / td = cachorro.dupla_id
+          td = cachorro.frequencia
+          td = cachorro.duracao
+          / td = cachorro.areas
+          td = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
+          / td = link_to 'Show', cachorro
+          td 
+            = link_to 'Editar', edit_cachorro_path(cachorro), class: 'ui mini button'
+            = link_to 'Excluir', cachorro, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
+
+  br
+
+  = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  data_de_nascimento: 2019-07-11 02:16:04
+  sexo: MyString
+  porte: MyString
+  foto: MyString
+  status: MyString
+  observacoes: MyText
+  equipamento: MyString
+  dupla_id: 1
+  frequencia: 1
+  duracao: 1
+  areas: MyString
+  disponivel_para_passeio: false
+
+two:
+  nome: MyString
+  data_de_nascimento: 2019-07-11 02:16:04
+  sexo: MyString
+  porte: MyString
+  foto: MyString
+  status: MyString
+  observacoes: MyText
+  equipamento: MyString
+  dupla_id: 1
+  frequencia: 1
+  duracao: 1
+  areas: MyString
+  disponivel_para_passeio: false

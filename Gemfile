@@ -56,3 +56,5 @@ end
 gem 'slim-rails'
 gem 'recaptcha'
 gem 'bootstrap', '~> 4.3.1'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'

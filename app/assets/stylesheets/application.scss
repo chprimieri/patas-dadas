@@ -14,5 +14,11 @@
  *= require_self
  */
 
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap";
+@import "semantic-ui";
+
+$primary-color: #FEC901;
+$secondary-color: #00ACAC; 
+
+#menu_principal{
+	background-color: #FEC901;
+}

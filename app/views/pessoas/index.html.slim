@@ -1,29 +1,30 @@
-h1 Listing pessoas
-
-table
-  thead
-    tr
-      th Nome
-      th Data de nascimento
-      th Email
-      th Telefone
-      th Foto
-      th
-      th
-      th
-
-  tbody
-    - @pessoas.each do |pessoa|
+.ui.container
+  h1 Voluntários do Patas Dadas
+  br
+  table.ui.very.basic.collapsing.selectable.table
+    thead
       tr
-        td = pessoa.nome
-        td = pessoa.data_de_nascimento
-        td = pessoa.email
-        td = pessoa.telefone
-        td = pessoa.foto
-        td = link_to 'Show', pessoa
-        td = link_to 'Edit', edit_pessoa_path(pessoa)
-        td = link_to 'Destroy', pessoa, data: { confirm: 'Are you sure?' }, method: :delete
+        th Nome
+        th Data de nascimento
+        th Email
+        th Telefone
+        / th Foto
+        / th
+        th
 
-br
+    tbody
+      - @pessoas.each do |pessoa|
+        tr
+          td = pessoa.nome
+          td = pessoa.data_de_nascimento.strftime("%d-%m-%Y")
+          td = pessoa.email
+          td = pessoa.telefone
+          / td = pessoa.foto
+          / td = link_to 'Mostrar', pessoa, class: 'ui mini button'
+          td
+            = link_to 'Editar', edit_pessoa_path(pessoa), class: 'ui mini button'
+            = link_to 'Excluir', pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 
-= link_to 'New Pessoa', new_pessoa_path
+  br
+
+  = link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'

@@ -1,25 +1,25 @@
-= form_for @pessoa do |f|
+= form_for @pessoa, html: { class: 'ui form' } do |f|
   - if @pessoa.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@pessoa.errors.count, "error")} prohibited this pessoa from being saved:"
+      h2 = "#{pluralize(@pessoa.errors.count, "erro")} impediu a gravação desse registro:"
       ul
         - @pessoa.errors.full_messages.each do |message|
           li = message
 
-  .form-group
-    .field
-      = f.label :nome
-      = f.text_field :nome
+  .field
+    = f.label :nome
+    = f.text_field :nome
+  .field
+    = f.label :email
+    = f.text_field :email
+  .two.fields
     .field
       = f.label :data_de_nascimento
-      = f.date_select :data_de_nascimento
-    .field
-      = f.label :email
-      = f.text_field :email
+      = f.date_field :data_de_nascimento
     .field
       = f.label :telefone
       = f.text_field :telefone
-    .field
-      = f.label :foto
-      = f.text_field :foto
-    .actions = f.submit
+  / .field
+  /   = f.label :foto
+  /   = f.text_field :foto
+  = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
