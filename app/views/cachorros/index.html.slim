@@ -38,6 +38,7 @@
           td = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
           / td = link_to 'Show', cachorro
           td 
+            = link_to 'Mostrar', cachorro, class: 'ui mini button'
             = link_to 'Editar', edit_cachorro_path(cachorro), class: 'ui mini button'
             = link_to 'Excluir', cachorro, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 

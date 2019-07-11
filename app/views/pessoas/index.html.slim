@@ -22,6 +22,7 @@
           / td = pessoa.foto
           / td = link_to 'Mostrar', pessoa, class: 'ui mini button'
           td
+            = link_to 'Mostrar', pessoa, class: 'ui mini button'
             = link_to 'Editar', edit_pessoa_path(pessoa), class: 'ui mini button'
             = link_to 'Excluir', pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 
