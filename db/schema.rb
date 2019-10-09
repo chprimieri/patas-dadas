@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190711114452) do
+ActiveRecord::Schema.define(version: 20191009033953) do
 
   create_table "cachorros", force: :cascade do |t|
     t.string   "nome"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20190711114452) do
     t.integer  "pessoa_id"
     t.boolean  "administracao"
     t.boolean  "passeio"
-    t.boolean  "turno"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["pessoa_id"], name: "index_permissoes_on_pessoa_id"
@@ -76,7 +75,6 @@ ActiveRecord::Schema.define(version: 20190711114452) do
     t.datetime "data_de_nascimento"
     t.string   "email"
     t.string   "telefone"
-    t.string   "foto"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
