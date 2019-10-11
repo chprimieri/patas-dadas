@@ -1,5 +1,7 @@
 class PessoasController < ApplicationController
   before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:new, :create]
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   # GET /pessoas
   # GET /pessoas.json
@@ -19,6 +21,7 @@ class PessoasController < ApplicationController
 
   # GET /pessoas/1/edit
   def edit
+    @pessoa = Pessoa.find(params[:id])
   end
 
   # POST /pessoas
@@ -28,8 +31,8 @@ class PessoasController < ApplicationController
 
     respond_to do |format|
       if @pessoa.save
-        format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }
-        format.json { render :show, status: :created, location: @pessoa }
+        redirect_to @pessoa, notice: "Voluntário cadastrado com sucesso!"
+        sign_in(@pessoa)
       else
         format.html { render :new }
         format.json { render json: @pessoa.errors, status: :unprocessable_entity }
@@ -40,9 +43,11 @@ class PessoasController < ApplicationController
   # PATCH/PUT /pessoas/1
   # PATCH/PUT /pessoas/1.json
   def update
+    @pessoa = Pessoa.find(params[:id]) 
+
     respond_to do |format|
       if @pessoa.update(pessoa_params)
-        format.html { redirect_to @pessoa, notice: 'Pessoa was successfully updated.' }
+        format.html { redirect_to @pessoa, notice: 'Dados atualizados com sucesso!' }
         format.json { render :show, status: :ok, location: @pessoa }
       else
         format.html { render :edit }
@@ -54,9 +59,11 @@ class PessoasController < ApplicationController
   # DELETE /pessoas/1
   # DELETE /pessoas/1.json
   def destroy
+    @pessoa = Pessoa.find(params[:id])
     @pessoa.destroy
+    sign_out
     respond_to do |format|
-      format.html { redirect_to pessoas_url, notice: 'Pessoa was successfully destroyed.' }
+      format.html { redirect_to pessoas_url, notice: 'Dados do voluntário apagados.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +76,6 @@ class PessoasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pessoa_params
-      params.require(:pessoa).permit(:nome, :data_de_nascimento, :email, :telefone, :foto)
+      params.require(:pessoa).permit(:nome, :data_de_nascimento, :email, :telefone, :password, :password_confirmation)
     end
 end

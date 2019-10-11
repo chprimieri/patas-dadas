@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191009033953) do
+ActiveRecord::Schema.define(version: 20191011172842) do
 
   create_table "cachorros", force: :cascade do |t|
     t.string   "nome"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20191009033953) do
     t.integer  "numero"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "duplo"
     t.index ["cachorro_id"], name: "index_canis_on_cachorro_id"
   end
 
@@ -52,12 +53,10 @@ ActiveRecord::Schema.define(version: 20191009033953) do
 
   create_table "passeios", force: :cascade do |t|
     t.integer  "pessoa_id"
-    t.integer  "cachorro_id"
     t.string   "status"
     t.datetime "data_e_hora"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["cachorro_id"], name: "index_passeios_on_cachorro_id"
     t.index ["pessoa_id"], name: "index_passeios_on_pessoa_id"
   end
 
@@ -77,6 +76,8 @@ ActiveRecord::Schema.define(version: 20191009033953) do
     t.string   "telefone"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "password_digest"
+    t.index ["email"], name: "index_pessoas_on_email"
   end
 
 end

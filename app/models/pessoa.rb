@@ -1,8 +1,8 @@
 class Pessoa < ApplicationRecord
+	has_secure_password
+
 	validates :nome, :data_de_nascimento, :email, :telefone, presence: true
-	validates :email, uniqueness: true
-	validates :foto, allow_blank: true, format: {
-		with: %r{\.(jpg|png)\Z}i,
-		message: 'Deve ser uma imagem JPG ou PNG.'
-	}
+	validates :email, uniqueness: {case_sensitive: false}
+	validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+	before_save { self.email = email.downcase }
 end

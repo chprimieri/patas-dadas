@@ -13,10 +13,10 @@
   p
     strong Telefone:
     = @pessoa.telefone
-  / p
-  /   strong Foto:
-  /   = @pessoa.foto
 
-  => link_to 'Editar', edit_pessoa_path(@pessoa)
-  '|
+  - if  current_user == @pessoa
+    => link_to 'Editar', edit_pessoa_path(@pessoa)
+    '|
+    => link_to 'Excluir', @pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete
+    '|
   =< link_to 'Voltar', pessoas_path

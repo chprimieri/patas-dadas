@@ -8,18 +8,23 @@
 
   .field
     = f.label :nome
-    = f.text_field :nome
-  .field
-    = f.label :email
-    = f.text_field :email
+    = f.text_field :nome, placeholder: 'Nome'
   .two.fields
     .field
       = f.label :data_de_nascimento
       = f.date_field :data_de_nascimento
     .field
       = f.label :telefone
-      = f.text_field :telefone
-  / .field
-  /   = f.label :foto
-  /   = f.text_field :foto
+      = f.text_field :telefone, placeholder: '(51)99999-9999'
+  .field
+    = f.label :email
+    = f.email_field :email, placeholder: 'seu_email@mail.com'
+  .two.fields
+    .field
+      = f.label :password, 'Senha'
+      = f.password_field :password, placeholder: 'Senha'
+    .field
+      = f.label :password_confirmation, 'Confirme a Senha'
+      = f.password_field :password_confirmation, placeholder: 'Confirme a Senha'
+
   = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
