@@ -1,6 +1,9 @@
 .ui.container
   h1 Cachorros do Patas Dadas
   br
+  
+  = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
+
   table.ui.very.basic.collapsing.selectable.table
     thead
       tr

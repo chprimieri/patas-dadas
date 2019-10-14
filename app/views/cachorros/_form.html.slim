@@ -15,7 +15,7 @@
       = f.date_field :data_de_nascimento
     .field
       = f.label :sexo
-      = f.select :sexo, options_for_select(['feminino', 'masculino'])
+      = f.select :sexo, options_for_select(['fêmea', 'macho'])
     .field
       = f.label :porte
       = f.select :porte, options_for_select(['pequeno', 'médio', 'grande'])
@@ -24,7 +24,7 @@
     /   = f.text_field :foto
     .field
       = f.label :status
-      = f.select :status, options_for_select(['disponível', 'indisponível'])
+      = f.select :status, Cachorro.status.keys.to_a
   .four.fields
     .field
       = f.label :equipamento, 'Equipamento para Passeio'
@@ -33,10 +33,10 @@
     /   = f.label :dupla_id
     /   = f.number_field :dupla_id
     .field
-      = f.label :frequencia, 'Frequência'
+      = f.label :frequencia, 'Frequência Semanal'
       = f.select :duracao, options_for_select([3, 4, 5])
     .field
-      = f.label :duracao, 'Duração do Passeio'
+      = f.label :duracao, 'Duração do Passeio (min)'
       = f.select :duracao, options_for_select([30, 40, 50, 60])
     .field
       = f.label :areas, 'Áreas para Passeio'
