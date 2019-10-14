@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   root 'home#index'
-  root 'sessions#new'
 
   resources :passeios
   resources :cachorros
@@ -10,6 +9,6 @@ Rails.application.routes.draw do
   
 	get    'sign_in'   => 'sessions#new'
 	post   'sign_in'   => 'sessions#create'
-	delete 'sign_out'  => 'sessions#destroy'
+	get 'sign_out'  => 'sessions#destroy'
 
 end

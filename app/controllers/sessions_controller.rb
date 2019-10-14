@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if @pessoa && @pessoa.authenticate(params[:session][:password])
       sign_in @pessoa
-    	redirect_to @pessoa
+    	redirect_to @pessoa, notice: 'Bem-vindo de volta!'
 		else
       render action: :new
 		end

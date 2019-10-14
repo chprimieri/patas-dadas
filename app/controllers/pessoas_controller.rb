@@ -29,14 +29,11 @@ class PessoasController < ApplicationController
   def create
     @pessoa = Pessoa.new(pessoa_params)
 
-    respond_to do |format|
-      if @pessoa.save
-        redirect_to @pessoa, notice: "Voluntário cadastrado com sucesso!"
-        sign_in(@pessoa)
-      else
-        format.html { render :new }
-        format.json { render json: @pessoa.errors, status: :unprocessable_entity }
-      end
+    if @pessoa.save
+      redirect_to @pessoa, notice: 'Voluntário(a) cadastrado com sucesso!'
+      sign_in(@pessoa)
+    else
+      render action: :new
     end
   end
 
@@ -63,7 +60,7 @@ class PessoasController < ApplicationController
     @pessoa.destroy
     sign_out
     respond_to do |format|
-      format.html { redirect_to pessoas_url, notice: 'Dados do voluntário apagados.' }
+      format.html { redirect_to pessoas_url, notice: 'Dados do voluntário(a) apagados.' }
       format.json { head :no_content }
     end
   end
