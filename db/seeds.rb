@@ -5,35 +5,37 @@ I18n.reload!
 
 Faker::Config.locale = 'pt-BR'
 
-# Pessoa.destroy_all
 
-# 50.times do |index|
-#   Pessoa.create!( nome: Faker::Name.unique.name,
-#   								data_de_nascimento: Faker::Date.birthday(18, 65),
-#                   email: Faker::Internet.unique.email,
-#                   telefone: Faker::PhoneNumber.phone_number,
-#                   foto: "pessoa.jpg")
-# end
+Pessoa.destroy_all
 
-# p "Criadas #{Pessoa.count} pessoas"
+50.times do |index|
+  Pessoa.create!( nome: Faker::Name.unique.name,
+  								data_de_nascimento: Faker::Date.birthday(min_age: 18, max_age: 65),
+                  email: Faker::Internet.unique.email,
+                  telefone: Faker::PhoneNumber.phone_number,
+                  password: "1234",
+                  password_confirmation: "1234")
+end
 
-# Cachorro.destroy_all
+p "Criadas #{Pessoa.count} pessoas"
 
-# 50.times do |index|
-#   Cachorro.create!( nome: Faker::Creature::Dog.unique.name,
-#   								data_de_nascimento: Faker::Date.birthday(0, 15),
-#                   sexo: Faker::Creature::Dog.gender,
-#                   porte: Faker::Creature::Dog.size,
-#                   status: Faker::Subscription.status,
-#                   observacoes: Faker::Lorem.paragraph,
-#                   equipamento: Faker::Hipster.word,
-#                   frequencia: Faker::Number.between(3, 5),
-#                   duracao: Faker::Number.between(30, 60),
-#                   areas: Faker::Address.community,
-#                   disponivel_para_passeio: Faker::Boolean.boolean)
-# end
+Cachorro.destroy_all
 
-# p "Criados #{Cachorro.count} cachorros"
+50.times do |index|
+  Cachorro.create!( nome: Faker::Creature::Dog.unique.name,
+  								data_de_nascimento: Faker::Date.birthday(min_age: 0, max_age: 15),
+                  sexo: Faker::Creature::Dog.gender,
+                  porte: Faker::Creature::Dog.size,
+                  status: Faker::Number.between(from: 0, to: 1),
+                  observacoes: Faker::Lorem.paragraph,
+                  equipamento: Faker::Hipster.word,
+                  frequencia: Faker::Number.between(from: 3, to: 5),
+                  duracao: Faker::Number.between(from: 30, to: 60),
+                  areas: Faker::Address.community,
+                  disponivel_para_passeio: Faker::Boolean.boolean)
+end
+
+p "Criados #{Cachorro.count} cachorros"
 
 # Passeio.destroy_all
 

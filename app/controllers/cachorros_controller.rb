@@ -69,6 +69,6 @@ class CachorrosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cachorro_params
-      params.require(:cachorro).permit(:nome, :data_de_nascimento, :sexo, :porte, :foto, :status, :observacoes, :equipamento, :dupla_id, :frequencia, :duracao, :areas, :disponivel_para_passeio)
+      params.require(:cachorro).permit(:nome, :data_de_nascimento, :sexo, :porte, :status, :observacoes, :equipamento, :dupla_id, :frequencia, :duracao, :areas, :disponivel_para_passeio)
     end
 end
