@@ -8,8 +8,6 @@
         th Data de nascimento
         th Email
         th Telefone
-        / th Foto
-        / th
         th
 
     tbody
@@ -19,8 +17,6 @@
           td = pessoa.data_de_nascimento.strftime("%d-%m-%Y")
           td = pessoa.email
           td = pessoa.telefone
-          / td = pessoa.foto
-          / td = link_to 'Mostrar', pessoa, class: 'ui mini button'
           td
             = link_to 'Mostrar', pessoa, class: 'ui mini button'
             = link_to 'Editar', edit_pessoa_path(pessoa), class: 'ui mini button'

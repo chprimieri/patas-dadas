@@ -2,14 +2,14 @@
 
 one:
   nome: MyString
-  data_de_nascimento: 2019-07-09 00:29:11
-  email: MyString
+  data_de_nascimento: 2019-10-14 03:27:36
   telefone: MyString
-  foto: MyString
+  email: MyString
+  password_digest: MyString
 
 two:
   nome: MyString
-  data_de_nascimento: 2019-07-09 00:29:11
-  email: MyString
+  data_de_nascimento: 2019-10-14 03:27:36
   telefone: MyString
-  foto: MyString
+  email: MyString
+  password_digest: MyString

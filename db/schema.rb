@@ -10,62 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191011172842) do
+ActiveRecord::Schema.define(version: 2019_10_14_033810) do
 
   create_table "cachorros", force: :cascade do |t|
-    t.string   "nome"
+    t.string "nome"
     t.datetime "data_de_nascimento"
-    t.string   "sexo"
-    t.string   "porte"
-    t.string   "foto"
-    t.string   "status"
-    t.text     "observacoes"
-    t.string   "equipamento"
-    t.integer  "dupla_id"
-    t.integer  "frequencia"
-    t.integer  "duracao"
-    t.string   "areas"
-    t.boolean  "disponivel_para_passeio"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "canis", force: :cascade do |t|
-    t.integer  "cachorro_id"
-    t.string   "corredor"
-    t.integer  "numero"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "duplo"
-    t.index ["cachorro_id"], name: "index_canis_on_cachorro_id"
+    t.string "sexo"
+    t.string "porte"
+    t.integer "status"
+    t.text "observacoes"
+    t.string "equipamento"
+    t.integer "dupla_id"
+    t.integer "frequencia"
+    t.integer "duracao"
+    t.string "areas"
+    t.boolean "disponivel_para_passeio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "passeios", force: :cascade do |t|
-    t.integer  "pessoa_id"
-    t.string   "status"
+    t.integer "pessoa_id"
+    t.integer "cachorro_1_id"
+    t.integer "cachorro_2_id"
+    t.integer "cachorro_3_id"
+    t.string "status"
     t.datetime "data_e_hora"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cachorro_1_id"], name: "index_passeios_on_cachorro_1_id"
+    t.index ["cachorro_2_id"], name: "index_passeios_on_cachorro_2_id"
+    t.index ["cachorro_3_id"], name: "index_passeios_on_cachorro_3_id"
     t.index ["pessoa_id"], name: "index_passeios_on_pessoa_id"
   end
 
-  create_table "permissoes", force: :cascade do |t|
-    t.integer  "pessoa_id"
-    t.boolean  "administracao"
-    t.boolean  "passeio"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["pessoa_id"], name: "index_permissoes_on_pessoa_id"
-  end
-
   create_table "pessoas", force: :cascade do |t|
-    t.string   "nome"
+    t.string "nome"
     t.datetime "data_de_nascimento"
-    t.string   "email"
-    t.string   "telefone"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "password_digest"
+    t.string "telefone"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_pessoas_on_email"
   end
 

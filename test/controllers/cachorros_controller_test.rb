@@ -17,7 +17,7 @@ class CachorrosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cachorro" do
     assert_difference('Cachorro.count') do
-      post cachorros_url, params: { cachorro: { areas: @cachorro.areas, data_de_nascimento: @cachorro.data_de_nascimento, disponivel_para_passeio: @cachorro.disponivel_para_passeio, dupla_id: @cachorro.dupla_id, duracao: @cachorro.duracao, equipamento: @cachorro.equipamento, foto: @cachorro.foto, frequencia: @cachorro.frequencia, nome: @cachorro.nome, observacoes: @cachorro.observacoes, porte: @cachorro.porte, sexo: @cachorro.sexo, status: @cachorro.status } }
+      post cachorros_url, params: { cachorro: { areas: @cachorro.areas, data_de_nascimento: @cachorro.data_de_nascimento, disponivel_para_passeio: @cachorro.disponivel_para_passeio, dupla_id: @cachorro.dupla_id, duracao: @cachorro.duracao, equipamento: @cachorro.equipamento, frequencia: @cachorro.frequencia, nome: @cachorro.nome, observacoes: @cachorro.observacoes, porte: @cachorro.porte, sexo: @cachorro.sexo, status: @cachorro.status } }
     end
 
     assert_redirected_to cachorro_url(Cachorro.last)
@@ -34,7 +34,7 @@ class CachorrosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cachorro" do
-    patch cachorro_url(@cachorro), params: { cachorro: { areas: @cachorro.areas, data_de_nascimento: @cachorro.data_de_nascimento, disponivel_para_passeio: @cachorro.disponivel_para_passeio, dupla_id: @cachorro.dupla_id, duracao: @cachorro.duracao, equipamento: @cachorro.equipamento, foto: @cachorro.foto, frequencia: @cachorro.frequencia, nome: @cachorro.nome, observacoes: @cachorro.observacoes, porte: @cachorro.porte, sexo: @cachorro.sexo, status: @cachorro.status } }
+    patch cachorro_url(@cachorro), params: { cachorro: { areas: @cachorro.areas, data_de_nascimento: @cachorro.data_de_nascimento, disponivel_para_passeio: @cachorro.disponivel_para_passeio, dupla_id: @cachorro.dupla_id, duracao: @cachorro.duracao, equipamento: @cachorro.equipamento, frequencia: @cachorro.frequencia, nome: @cachorro.nome, observacoes: @cachorro.observacoes, porte: @cachorro.porte, sexo: @cachorro.sexo, status: @cachorro.status } }
     assert_redirected_to cachorro_url(@cachorro)
   end
 

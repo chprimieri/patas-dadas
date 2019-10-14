@@ -1,11 +1,11 @@
-class CreatePessoas < ActiveRecord::Migration[5.0]
+class CreatePessoas < ActiveRecord::Migration[5.2]
   def change
     create_table :pessoas do |t|
       t.string :nome
       t.timestamp :data_de_nascimento
-      t.string :email
       t.string :telefone
-      t.string :foto
+      t.string :email
+      t.string :password_digest
 
       t.timestamps
     end

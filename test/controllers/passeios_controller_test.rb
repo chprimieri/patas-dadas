@@ -17,7 +17,7 @@ class PasseiosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create passeio" do
     assert_difference('Passeio.count') do
-      post passeios_url, params: { passeio: { cachorro_id: @passeio.cachorro_id, data_e_hora: @passeio.data_e_hora, pessoa_id: @passeio.pessoa_id, status: @passeio.status } }
+      post passeios_url, params: { passeio: { cachorro_1_id: @passeio.cachorro_1_id, cachorro_2_id: @passeio.cachorro_2_id, cachorro_3_id: @passeio.cachorro_3_id, data_e_hora: @passeio.data_e_hora, pessoa_id: @passeio.pessoa_id, status: @passeio.status } }
     end
 
     assert_redirected_to passeio_url(Passeio.last)
@@ -34,7 +34,7 @@ class PasseiosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update passeio" do
-    patch passeio_url(@passeio), params: { passeio: { cachorro_id: @passeio.cachorro_id, data_e_hora: @passeio.data_e_hora, pessoa_id: @passeio.pessoa_id, status: @passeio.status } }
+    patch passeio_url(@passeio), params: { passeio: { cachorro_1_id: @passeio.cachorro_1_id, cachorro_2_id: @passeio.cachorro_2_id, cachorro_3_id: @passeio.cachorro_3_id, data_e_hora: @passeio.data_e_hora, pessoa_id: @passeio.pessoa_id, status: @passeio.status } }
     assert_redirected_to passeio_url(@passeio)
   end
 
