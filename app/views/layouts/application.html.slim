@@ -6,6 +6,7 @@ html
     = stylesheet_link_tag    'application', media: :all, 'data-turbolinks-track': 'reload'
     = content_for :js do
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
 
   body
     nav.ui.top.massive.borderless.menu#menu_principal

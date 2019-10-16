@@ -1,46 +1,49 @@
 .ui.container
   p#notice = notice
 
-  p
-    strong Nome:
-    = @cachorro.nome
-  p
-    strong Data de nascimento:
-    = @cachorro.data_de_nascimento.strftime("%d-%m-%Y")
-  p
-    strong Sexo:
-    = @cachorro.sexo
-  p
-    strong Porte:
-    = @cachorro.porte
-  / p
-  /   strong Foto:
-  /   = @cachorro.foto
-  / p
-  /   strong Status:
-  /   = @cachorro.status
-  p
-    strong Observações:
-    = @cachorro.observacoes
-  / p
-  /   strong Equipamento:
-  /   = @cachorro.equipamento
-  / p
-  /   strong Dupla:
-  /   = @cachorro.dupla_id
-  p
-    strong Frequência:
-    = @cachorro.frequencia
-  p
-    strong Duração:
-    = @cachorro.duracao
-  / p
-  /   strong Áreas:
-  /   = @cachorro.areas
-  p
-    strong Disponível para passeio:
-    = (@cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
+  .ui.grid
+    .eight.wide.column
+      - if @cachorro.foto.attached?
+        image src="#{(url_for(@cachorro.foto))}" 
 
-  => link_to 'Editar', edit_cachorro_path(@cachorro)
-  '|
-  =< link_to 'Voltar', cachorros_path
+    .eight.wide.column  
+      p
+        strong Nome: 
+        = @cachorro.nome
+      p
+        strong Data de nascimento: 
+        = @cachorro.data_de_nascimento.strftime("%d-%m-%Y")
+      p
+        strong Sexo: 
+        = @cachorro.sexo
+      p
+        strong Porte: 
+        = @cachorro.porte
+      p  
+        strong Status: 
+        = @cachorro.status
+      p
+        strong Observações: 
+        = @cachorro.observacoes
+      p
+        strong Equipamento: 
+        = @cachorro.equipamento
+      / p
+      /   strong Dupla: 
+      /   = @cachorro.dupla_id
+      p
+        strong Frequência: 
+        = @cachorro.frequencia
+      p
+        strong Duração: 
+        = @cachorro.duracao
+      p
+        strong Áreas: 
+        = @cachorro.areas
+      p
+        strong Disponível para passeio: 
+        = (@cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
+
+      => link_to 'Editar', edit_cachorro_path(@cachorro)
+      '|
+      =< link_to 'Voltar', cachorros_path
