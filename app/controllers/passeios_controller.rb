@@ -28,7 +28,7 @@ class PasseiosController < ApplicationController
 
     respond_to do |format|
       if @passeio.save
-        format.html { redirect_to @passeio, notice: 'Passeio was successfully created.' }
+        format.html { redirect_to @passeio, notice: 'Você cadastrou um passeio!' }
         format.json { render :show, status: :created, location: @passeio }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PasseiosController < ApplicationController
   def update
     respond_to do |format|
       if @passeio.update(passeio_params)
-        format.html { redirect_to @passeio, notice: 'Passeio was successfully updated.' }
+        format.html { redirect_to @passeio, notice: 'Seu passeio foi atualizado!' }
         format.json { render :show, status: :ok, location: @passeio }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class PasseiosController < ApplicationController
   def destroy
     @passeio.destroy
     respond_to do |format|
-      format.html { redirect_to passeios_url, notice: 'Passeio was successfully destroyed.' }
+      format.html { redirect_to passeios_url, notice: 'Seu passeio foi excluído!' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class PasseiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def passeio_params
-      params.require(:passeio).permit(:pessoa_id, :cachorro_id, :status, :data_e_hora)
+      params.require(:passeio).permit(:pessoa_id, :cachorro_1_id, :cachorro_2_id, :cachorro_3_id, :status, :data_e_hora)
     end
 end

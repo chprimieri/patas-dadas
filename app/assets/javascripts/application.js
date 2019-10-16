@@ -15,3 +15,4 @@
 //= require activestorage
 //= require_tree .
 //= require semantic-ui
+//= require jquery.xdan.datetimepicker
