@@ -2,4 +2,5 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$('.ui.slider.checkbox').checkbox();
+$ ->
+	('.ui.checkbox').checkbox()

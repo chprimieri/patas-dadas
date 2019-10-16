@@ -23,35 +23,38 @@
     .field
       = f.label :porte
       = f.select :porte, options_for_select(['pequeno', 'médio', 'grande'])
-    / .field
-    /   = f.label :foto
-    /   = f.text_field :foto
     .field
       = f.label :status
       = f.select :status, Cachorro.status.keys.to_a
   .field
     = f.label :observacoes, 'Observações'
     = f.text_area :observacoes, rows: "2"
-  .field
-    .ui.slider.checkbox
-      = f.label :disponivel_para_passeio, 'Disponível para Passeio'
+
+  .ui.divider
+  h3 Informações para Passeio
+
+  .inline.field
+    .ui.toggle.checkbox
       = f.check_box :disponivel_para_passeio
+      = f.label :disponivel_para_passeio, 'Disponível para Passeio'
+  .field
+    = f.label :dupla_id, 'Dupla para passeio'
+    = f.select :dupla_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
   .four.fields
     .field
       = f.label :equipamento, 'Equipamento para Passeio'
-      = f.select :equipamento, options_for_select(['coleira', 'peitoral', 'enforcador'])
-    / .field
-    /   = f.label :dupla_id
-    /   = f.number_field :dupla_id
+      = f.select :equipamento, options_for_select(['coleira', 'peitoral', 'enforcador']), include_blank: true
     .field
       = f.label :frequencia, 'Frequência Semanal'
-      = f.select :frequencia, options_for_select([3, 4, 5])
+      = f.select :frequencia, options_for_select([3, 4, 5]), include_blank: true
     .field
       = f.label :duracao, 'Duração do Passeio (min)'
-      = f.select :duracao, options_for_select([30, 40, 50, 60])
+      = f.select :duracao, options_for_select([30, 40, 50, 60]), include_blank: true
     .field
       = f.label :areas, 'Áreas para Passeio'
-      = f.select :areas, options_for_select(['todas', 'apenas ruas', 'apenas locais calmos'])
+      = f.select :areas, options_for_select(['todas', 'apenas ruas', 'apenas locais calmos']), include_blank: true
 
+  .ui.buttons
+    = link_to 'Voltar', cachorros_path, class: 'ui button'
+    = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
 
-  = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }

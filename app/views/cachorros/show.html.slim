@@ -28,9 +28,10 @@
       p
         strong Equipamento: 
         = @cachorro.equipamento
-      / p
-      /   strong Dupla: 
-      /   = @cachorro.dupla_id
+      - if @cachorro.dupla_id.present?
+        p
+          strong Dupla para Passeio: 
+          = Cachorro.find(@cachorro.dupla_id).nome
       p
         strong Frequência: 
         = @cachorro.frequencia
@@ -44,6 +45,6 @@
         strong Disponível para passeio: 
         = (@cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
 
-      => link_to 'Editar', edit_cachorro_path(@cachorro)
-      '|
-      =< link_to 'Voltar', cachorros_path
+      .ui.buttons
+        = link_to 'Voltar', cachorros_path, class: 'ui button'
+        = link_to 'Editar', edit_cachorro_path(@cachorro), class: 'ui primary button'
