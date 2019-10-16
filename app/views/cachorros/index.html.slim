@@ -7,6 +7,7 @@
   table.ui.very.basic.collapsing.selectable.table
     thead
       tr
+        th 
         th Nome
         th Data de nascimento
         th Sexo
@@ -26,12 +27,14 @@
     tbody
       - @cachorros.each do |cachorro|
         tr
+          td 
+            - if cachorro.foto.attached?
+              = image_tag cachorro.foto.variant(resize: "70x70")
           td = cachorro.nome
           td = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
           td = cachorro.sexo
           td = cachorro.porte
-          / td = cachorro.foto
-          / td = cachorro.status
+          td = cachorro.status
           / td = cachorro.observacoes
           / td = cachorro.equipamento
           / td = cachorro.dupla_id

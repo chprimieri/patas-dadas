@@ -28,7 +28,7 @@ class CachorrosController < ApplicationController
 
     respond_to do |format|
       if @cachorro.save
-        format.html { redirect_to @cachorro, notice: 'Cachorro was successfully created.' }
+        format.html { redirect_to @cachorro, notice: 'Cachorro foi cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @cachorro }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CachorrosController < ApplicationController
   def update
     respond_to do |format|
       if @cachorro.update(cachorro_params)
-        format.html { redirect_to @cachorro, notice: 'Cachorro was successfully updated.' }
+        format.html { redirect_to @cachorro, notice: 'Dados atualizados com sucesso.' }
         format.json { render :show, status: :ok, location: @cachorro }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CachorrosController < ApplicationController
   def destroy
     @cachorro.destroy
     respond_to do |format|
-      format.html { redirect_to cachorros_url, notice: 'Cachorro was successfully destroyed.' }
+      format.html { redirect_to cachorros_url, notice: 'Dados apagados.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class CachorrosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cachorro_params
-      params.require(:cachorro).permit(:nome, :data_de_nascimento, :sexo, :porte, :status, :observacoes, :equipamento, :dupla_id, :frequencia, :duracao, :areas, :disponivel_para_passeio)
+      params.require(:cachorro).permit(:nome, :foto, :data_de_nascimento, :sexo, :porte, :status, :observacoes, :equipamento, :dupla_id, :frequencia, :duracao, :areas, :disponivel_para_passeio)
     end
 end
