@@ -4,23 +4,20 @@
   
   = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
 
-  table.ui.very.basic.collapsing.selectable.table
+  table.ui.very.basic.selectable.table
     thead
       tr
         th 
         th Nome
-        th Data de nascimento
-        th Sexo
-        th Porte
-        / th Foto
-        / th Status
-        / th Observações
+        th.center.aligned Data de nascimento
+        th.center.aligned Sexo
+        th.center.aligned Porte
+        th.center.aligned Status
         / th Equipamento
-        / th Dupla
-        th Frequência
-        th Duração
+        / th Frequência
+        / th Duração
         / th Áreas
-        th Passeio
+        th.center.aligned Passeio
         / th
         th
 
@@ -31,20 +28,18 @@
             - if cachorro.foto.attached?
               = image_tag cachorro.foto.variant(resize: "70x70")
           td = cachorro.nome
-          td = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
-          td = cachorro.sexo
-          td = cachorro.porte
-          td = cachorro.status
-          / td = cachorro.observacoes
+          td.center.aligned = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
+          td.center.aligned = cachorro.sexo
+          td.center.aligned = cachorro.porte
+          td.center.aligned = cachorro.status
           / td = cachorro.equipamento
-          / td = cachorro.dupla_id
-          td = cachorro.frequencia
-          td = cachorro.duracao
+          / td = cachorro.frequencia
+          / td = cachorro.duracao
           / td = cachorro.areas
-          td = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
+          td.center.aligned = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
           / td = link_to 'Show', cachorro
-          td 
-            = link_to 'Mostrar', cachorro, class: 'ui mini button'
+          td.center.aligned
+            = link_to 'Detalhes', cachorro, class: 'ui mini button'
             = link_to 'Editar', edit_cachorro_path(cachorro), class: 'ui mini button'
             = link_to 'Excluir', cachorro, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 

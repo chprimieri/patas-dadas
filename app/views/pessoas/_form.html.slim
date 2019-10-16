@@ -27,4 +27,6 @@
       = f.label :password_confirmation, 'Confirme a Senha'
       = f.password_field :password_confirmation, placeholder: 'Confirme a Senha'
 
-  = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
+  .ui.buttons
+    = link_to 'Voltar', pessoas_path, class: 'ui button'
+    = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }

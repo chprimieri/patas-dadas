@@ -4,7 +4,7 @@
   .ui.grid
     .eight.wide.column
       - if @cachorro.foto.attached?
-        image src="#{(url_for(@cachorro.foto))}" 
+        image src="#{(url_for(@cachorro.foto.variant(resize: "300x300")))}" 
 
     .eight.wide.column  
       p

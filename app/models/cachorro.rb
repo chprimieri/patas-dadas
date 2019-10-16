@@ -1,7 +1,7 @@
 class Cachorro < ApplicationRecord
 	enum status: [:ativo, :inativo]
 	has_one_attached :foto
-	has_one :cachorro, class_name: 'Cachorro', foreign_key: 'dupla_id'
+	has_one :dupla, class_name: 'Cachorro', foreign_key: 'dupla_id'
 
 	validates :nome, :data_de_nascimento, :sexo, :porte, :status, presence: true
 	validate :image_type
@@ -13,7 +13,7 @@ class Cachorro < ApplicationRecord
 
 	def image_type
 	  if foto.attached? 
-	    if !foto.content_type.in?(%('image/jpeg image/png'))
+	    if !foto.content_type.in?(%w(image/jpeg image/png))
 	    	errors.add(:foto, "Apenas arquivos pjeg e png são aceitos.")
 	   	end
 	  end

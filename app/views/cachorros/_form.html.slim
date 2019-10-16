@@ -37,22 +37,22 @@
     .ui.toggle.checkbox
       = f.check_box :disponivel_para_passeio
       = f.label :disponivel_para_passeio, 'Disponível para Passeio'
-  .field
-    = f.label :dupla_id, 'Dupla para passeio'
-    = f.select :dupla_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
-  .four.fields
+  .five.fields
     .field
-      = f.label :equipamento, 'Equipamento para Passeio'
+      = f.label :equipamento, 'Equipamento'
       = f.select :equipamento, options_for_select(['coleira', 'peitoral', 'enforcador']), include_blank: true
     .field
       = f.label :frequencia, 'Frequência Semanal'
       = f.select :frequencia, options_for_select([3, 4, 5]), include_blank: true
     .field
-      = f.label :duracao, 'Duração do Passeio (min)'
+      = f.label :duracao, 'Duração (minutos)'
       = f.select :duracao, options_for_select([30, 40, 50, 60]), include_blank: true
     .field
       = f.label :areas, 'Áreas para Passeio'
       = f.select :areas, options_for_select(['todas', 'apenas ruas', 'apenas locais calmos']), include_blank: true
+    .field
+      = f.label :dupla_id, 'Dupla para passeio'
+      = f.select :dupla_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
 
   .ui.buttons
     = link_to 'Voltar', cachorros_path, class: 'ui button'
