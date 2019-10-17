@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
@@ -67,4 +68,4 @@ gem 'recaptcha'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'jquery-rails'
-gem 'xdan-datetimepicker-rails'
+gem 'rails-assets-datetimepicker'

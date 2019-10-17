@@ -15,4 +15,6 @@
 //= require activestorage
 //= require_tree .
 //= require semantic-ui
-//= require jquery.xdan.datetimepicker
+//= require datetimepicker
+
+jQuery.datetimepicker.setLocale('pt-BR');

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       sign_in @pessoa
     	redirect_to @pessoa, notice: 'Bem-vindo de volta!'
 		else
-      render action: :new
+      redirect_to sign_in_path, alert: 'Usuário e/ou senha incorretos!'
 		end
   end
 
