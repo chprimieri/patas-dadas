@@ -1,15 +1,16 @@
 .ui.container
+	.ui.one.column.centered.grid
+		.six.wide.column
+			h1 Acesso ao Sistema
 
-	h1 Acesso ao Sistema
+			= form_for :session, url: sign_in_path, html: { class: 'ui form' } do |f|
+			  .field
+			    = f.label :email
+			    = f.email_field :email, autofocus: true
+			  .field
+			    = f.label :password
+			    = f.password_field :password, autocomplete: "off"
+			  = f.submit 'Entrar', class: 'ui primary button', data: { disable_with: 'Entrando...' }
 
-	= form_for :session, url: sign_in_path, html: { class: 'ui form' } do |f|
-	  .field
-	    = f.label :email
-	    = f.email_field :email, autofocus: true
-	  .field
-	    = f.label :password
-	    = f.password_field :password, autocomplete: "off"
-	  = f.submit 'Entrar', class: 'ui primary button', data: { disable_with: 'Entrando...' }
-
-	  p
-	    | Novo voluntário? #{link_to "Cadastre-se!", new_pessoa_path}
+			  p
+			    | Novo voluntário? #{link_to "Cadastre-se!", new_pessoa_path}

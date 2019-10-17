@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_161434) do
+ActiveRecord::Schema.define(version: 2019_10_17_204143) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,10 +47,8 @@ ActiveRecord::Schema.define(version: 2019_10_16_161434) do
     t.boolean "disponivel_para_passeio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "dupla_id_id"
     t.integer "dupla_id"
     t.index ["dupla_id"], name: "index_cachorros_on_dupla_id"
-    t.index ["dupla_id_id"], name: "index_cachorros_on_dupla_id_id"
   end
 
   create_table "passeios", force: :cascade do |t|
@@ -58,10 +56,10 @@ ActiveRecord::Schema.define(version: 2019_10_16_161434) do
     t.integer "cachorro_1_id"
     t.integer "cachorro_2_id"
     t.integer "cachorro_3_id"
-    t.string "status"
     t.datetime "data_e_hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["cachorro_1_id"], name: "index_passeios_on_cachorro_1_id"
     t.index ["cachorro_2_id"], name: "index_passeios_on_cachorro_2_id"
     t.index ["cachorro_3_id"], name: "index_passeios_on_cachorro_3_id"

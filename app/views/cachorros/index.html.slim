@@ -26,7 +26,7 @@
         tr
           td 
             - if cachorro.foto.attached?
-              = image_tag cachorro.foto.variant(resize: "70x70")
+              = image_tag cachorro.foto.variant(resize: "70x70"), class: 'ui centered circular image'
           td = cachorro.nome
           td.center.aligned = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
           td.center.aligned = cachorro.sexo

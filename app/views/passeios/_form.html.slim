@@ -6,25 +6,22 @@
         - @passeio.errors.full_messages.each do |message|
           li = message
 
-  .fields
-    .field
-      = f.label :pessoa
-      = f.text_field :pessoa
-    .field
-      = f.label :cachorro_1, 'Cachorro 1'
-      = f.select :cachorro_1, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
-    .field
-      = f.label :cachorro_2, 'Cachorro 2'
-      = f.select :cachorro_2, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
-    .field
-      = f.label :cachorro_3, 'Cachorro 3'
-      = f.select :cachorro_3, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
-  .fields
-    .field
-      = f.label :status
-      = f.select :status, options_for_select(['agendado', 'realizado', 'cancelado'])
-    .field
-      = f.label :data_e_hora, 'Data e Hora'
-      = f.text_field :data_e_hora, class: :datahora, required: true, autocomplete: :off, value: data_formatada(f.object.data_e_hora)
+  .field
+    = f.label :data_e_hora, 'Data e Hora'
+    = f.text_field :data_e_hora, class: :datahora, required: true, autocomplete: :off, value: data_formatada(f.object.data_e_hora)  
+  .field
+    = f.label :cachorro_1, 'Cachorro 1'
+    = f.select :cachorro_1, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+  .field
+    = f.label :cachorro_2, 'Cachorro 2'
+    = f.select :cachorro_2, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+  .field
+    = f.label :cachorro_3, 'Cachorro 3'
+    = f.select :cachorro_3, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+  / .field
+  /   = f.label :status
+  /   = f.select :status, Passeio.status.keys.to_a
 
-  = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
+  .ui.buttons
+    = link_to 'Voltar', passeios_path, class: 'ui button'
+    = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }

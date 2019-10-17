@@ -1,4 +1,5 @@
 class Passeio < ApplicationRecord
+  enum status: [:agendado, :realizado, :cancelado]
   belongs_to :pessoa, class_name: "Pessoa", foreign_key: "pessoa_id"
   belongs_to :cachorro_1, class_name: "Cachorro", foreign_key: "cachorro_1_id"
   belongs_to :cachorro_2, class_name: "Cachorro", foreign_key: "cachorro_2_id"
