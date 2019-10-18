@@ -217,7 +217,10 @@ pt-BR:
   time:
     am: ''
     formats:
-      default: "%a, %d de %B de %Y, %H:%M:%S %z"
-      long: "%d de %B de %Y, %H:%M"
-      short: "%d de %B, %H:%M"
-    pm: ''
+      default: ! '%d/%m/%Y'
+      long: ! '%d de %B de %Y, %H:%M'
+      short: ! '%d de %B, %H:%M'
+      data: ! '%d/%m/%Y'
+      dia_data_hora: ! '%A, %d/%m/%Y %H:%M'
+      data_hora: ! '%d/%m/%Y %H:%M'
+      data_hora_full: ! '%d/%m/%Y %H:%M:%S'

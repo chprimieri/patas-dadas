@@ -1,11 +1,13 @@
 .ui.container
   h1 Lista de Passeios
   br
-  table.ui.very.basic.collapsing.selectable.table
+  = link_to 'Cadastrar Novo Passeio', new_passeio_path, class: 'ui small button'
+  
+  table.ui.very.basic.selectable.table
     thead
       tr
         th Pessoa
-        th Cachorro
+        th Cachorros
         th Status
         th Data e hora
         th
@@ -14,11 +16,10 @@
       - @passeios.each do |passeio|
         tr
           td = passeio.pessoa.nome
-          td = passeio.cachorro.nome
+          td = confere_cachorros(passeio.cachorro_1, passeio.cachorro_2, passeio.cachorro_3)
           td = passeio.status
           td = passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
           td
-            = link_to 'Mostrar', passeio, class: 'ui mini button'
             = link_to 'Editar', edit_passeio_path(passeio), class: 'ui mini button'
             = link_to 'Excluir', passeio, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 

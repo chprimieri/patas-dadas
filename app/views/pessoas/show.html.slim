@@ -1,21 +1,20 @@
 .ui.container
 
   p
-    strong Nome:
+    strong Nome: 
     = @pessoa.nome
   p
-    strong Data de nascimento:
+    strong Data de nascimento: 
     = @pessoa.data_de_nascimento.strftime("%d-%m-%Y")
   p
-    strong Email:
+    strong Email: 
     = @pessoa.email
   p
-    strong Telefone:
+    strong Telefone: 
     = @pessoa.telefone
 
-  - if  current_user == @pessoa
-    => link_to 'Editar', edit_pessoa_path(@pessoa)
-    '|
-    => link_to 'Excluir', @pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete
-    '|
-  =< link_to 'Voltar', pessoas_path
+  .ui.buttons
+    = link_to 'Voltar', pessoas_path, class: 'ui button'
+    - if  current_user == @pessoa
+      => link_to 'Excluir', @pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui negative button'
+      => link_to 'Editar', edit_pessoa_path(@pessoa), class: 'ui primary button'

@@ -4,7 +4,7 @@ class Cachorro < ApplicationRecord
 	has_many :passeios, foreign_key: "cachorro_2_id", class_name: "Passeio", dependent: :destroy
 	has_many :passeios, foreign_key: "cachorro_3_id", class_name: "Passeio", dependent: :destroy
 	has_one :dupla, class_name: 'Cachorro', foreign_key: 'dupla_id'
-	belongs_to :dupla, class_name: 'Cachorro', foreign_key: 'dupla_id'
+	belongs_to :dupla, class_name: 'Cachorro', foreign_key: 'dupla_id', optional: true
 	has_one_attached :foto
 
 	validates :nome, :data_de_nascimento, :sexo, :porte, :status, presence: true

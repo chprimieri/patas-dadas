@@ -1,7 +1,7 @@
 class PessoasController < ApplicationController
   before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
-  #before_action :authorize, except: [:new, :create]
-  #before_action :correct_user?, only: [:edit, :update, :destroy]
+  before_action :authorize, except: [:new, :create]
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   # GET /pessoas
   # GET /pessoas.json

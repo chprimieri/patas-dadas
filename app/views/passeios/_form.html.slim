@@ -1,7 +1,7 @@
 = form_for @passeio, html: { class: 'ui form' } do |f|
   - if @passeio.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@pessoa.errors.count, "erro")} impediu a gravação desse registro:"
+      h2 = "#{pluralize(@passeio.errors.count, "erro")} impediu a gravação desse registro:"
       ul
         - @passeio.errors.full_messages.each do |message|
           li = message
@@ -10,14 +10,15 @@
     = f.label :data_e_hora, 'Data e Hora'
     = f.text_field :data_e_hora, class: :datahora, required: true, autocomplete: :off, value: data_formatada(f.object.data_e_hora)  
   .field
-    = f.label :cachorro_1, 'Cachorro 1'
-    = f.select :cachorro_1, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+    = f.label :cachorro_1_id, 'Cachorro 1'
+    = f.select :cachorro_1_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
   .field
-    = f.label :cachorro_2, 'Cachorro 2'
-    = f.select :cachorro_2, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+    = f.label :cachorro_2_id, 'Cachorro 2'
+    = f.select :cachorro_2_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
   .field
-    = f.label :cachorro_3, 'Cachorro 3'
-    = f.select :cachorro_3, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+    = f.label :cachorro_3_id, 'Cachorro 3'
+    = f.select :cachorro_3_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome'), include_blank: true
+
   / .field
   /   = f.label :status
   /   = f.select :status, Passeio.status.keys.to_a

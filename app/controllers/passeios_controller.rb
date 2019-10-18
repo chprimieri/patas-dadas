@@ -1,5 +1,7 @@
 class PasseiosController < ApplicationController
   before_action :set_passeio, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:index, :show]
+  before_action :correct_user_passeios?, only: [:edit, :update, :destroy]
 
   # GET /passeios
   # GET /passeios.json
@@ -25,6 +27,13 @@ class PasseiosController < ApplicationController
   # POST /passeios.json
   def create
     @passeio = Passeio.new(passeio_params)
+    @passeio.pessoa_id = current_user.id
+
+    if @passeio.data_e_hora > Time.now()
+      @passeio.status = 0
+    else
+      @passeio.status = 1
+    end
 
     respond_to do |format|
       if @passeio.save
@@ -69,6 +78,7 @@ class PasseiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def passeio_params
-      params.require(:passeio).permit(:pessoa_id, :cachorro_1_id, :cachorro_2_id, :cachorro_3_id, :status, :data_e_hora)
+      params.require(:passeio).permit(:cachorro_1_id, :cachorro_2_id, :cachorro_3_id, :data_e_hora)
     end
+
 end

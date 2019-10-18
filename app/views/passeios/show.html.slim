@@ -1,18 +1,18 @@
 .ui.container
 
 	p
-	  strong Pessoa:
+	  strong Pessoa: 
 	  = @passeio.pessoa.nome
 	p
-	  strong Cachorro:
-	  = @passeio.cachorro.nome
+	  strong Cachorros: 
+	  = confere_cachorros(@passeio.cachorro_1, @passeio.cachorro_2, @passeio.cachorro_3)
 	p
-	  strong Status:
+	  strong Status: 
 	  = @passeio.status
 	p
-	  strong Data e hora:
+	  strong Data e hora: 
 	  = @passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
 
-	=> link_to 'Editar', edit_passeio_path(@passeio)
-	'|
-	=< link_to 'Voltar', passeios_path
+	.ui.buttons
+		= link_to 'Voltar', passeios_path, class: 'ui button'
+		=> link_to 'Editar', edit_passeio_path(@passeio), class: 'ui primary button'
