@@ -6,8 +6,8 @@ class Passeio < ApplicationRecord
   belongs_to :cachorro_3, class_name: "Cachorro", foreign_key: "cachorro_3_id", optional: true
 
   validates :pessoa_id, :status, :data_e_hora, presence: true
-  validate :existe_cachorro
-  validate :cachorro_repetido
+  validate :confere_se_existe_cachorro
+  validate :confere_cachorro_repetido
   validate :passeio_no_mesmo_horario
 
   scope :agendados, -> { where(status: :agendado) }
@@ -21,33 +21,63 @@ class Passeio < ApplicationRecord
   end
     
   private
-  	def existe_cachorro
+  	def confere_se_existe_cachorro
   		if cachorro_1.blank? && cachorro_2.blank? && cachorro_3.blank?
   			errors.add(:cachorro_1, "Não se esqueça de indicar o cachorro para o passeio.")
   		end
   	end
 
-    def cachorro_repetido
-      if !cachorro_1.nil? && !cachorro_2.nil?
-        if cachorro_1 == cachorro_2
-          errors.add(:cachorro_2, "Indique cachorros diferentes.")
-        end
+    def confere_cachorro_repetido
+      if mesmo_cachorro(cachorro_1, cachorro_2)
+        errors.add(:cachorro_2, "Indique cachorros diferentes.")
       end
 
-      if !cachorro_1.nil? && !cachorro_3.nil?
-        if cachorro_1 == cachorro_3
-          errors.add(:cachorro_3, "Indique cachorros diferentes.")
-        end
+      if mesmo_cachorro(cachorro_1, cachorro_3)
+        errors.add(:cachorro_3, "Indique cachorros diferentes.")
       end
 
-      if !cachorro_2.nil? && !cachorro_3.nil?
-        if cachorro_2 == cachorro_3
-          errors.add(:cachorro_3, "Indique cachorros diferentes.")
-        end
+      if mesmo_cachorro(cachorro_2, cachorro_3)
+        errors.add(:cachorro_3, "Indique cachorros diferentes.")
       end
     end
 
     def passeio_no_mesmo_horario
+      Passeio.agendados.each do |passeio_existente|
+        if passeio_existente.data_e_hora.between?(data_e_hora - 1.hours, data_e_hora + 1.hours)
+          if tres_cachorros_por_vez(cachorro_1, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
+            errors.add(:cachorro_1, "Este cachorro já está com um passeio agendado nesse horário.")
+          end
 
+          if tres_cachorros_por_vez(cachorro_2, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
+            errors.add(:cachorro_2, "Este cachorro já está com um passeio agendado nesse horário.")
+          end
+
+          if tres_cachorros_por_vez(cachorro_3, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
+            errors.add(:cachorro_3, "Este cachorro já está com um passeio agendado nesse horário.")
+          end
+        end
+      end
+    end
+
+    def tres_cachorros_por_vez(bibo, popis_1, popis_2, popis_3)
+      if mesmo_cachorro(bibo, popis_1)
+        return true
+      elsif mesmo_cachorro(bibo, popis_2)
+        return true
+      elsif mesmo_cachorro(bibo, popis_3)
+        return true
+      else
+        return false
+      end          
+    end
+
+    def mesmo_cachorro(cachorro_1, cachorro_2)
+      if !cachorro_1.nil? && !cachorro_2.nil?
+        if cachorro_1 == cachorro_2
+          return true
+        end
+      end
+
+      return false
     end
 end
