@@ -61,6 +61,10 @@ class CachorrosController < ApplicationController
     end
   end
 
+  def ranking
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cachorro
