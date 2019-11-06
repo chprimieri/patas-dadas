@@ -3,10 +3,11 @@ html
   head
     = content_for :title, 'Volutários - Patas Dadas'
     = content_for :head do
-    = stylesheet_link_tag    'application', media: :all, 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: :all, 'data-turbolinks-track': 'reload'
     = content_for :js do
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
+    = favicon_link_tag asset_path('paw.png')
 
   body
     nav.ui.top.massive.borderless.menu#menu_principal

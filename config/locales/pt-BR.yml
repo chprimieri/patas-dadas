@@ -1,4 +1,3 @@
----
 pt-BR:
   activerecord:
     errors:
@@ -7,6 +6,18 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+      models:
+        pessoa:
+          attributes:
+            password:
+              too_short: deve ter pelo menos 6 caracteres.
+            telefone:
+              too_short: deve ser no formato DDD + número.
+              too_long: deve ser no formato DDD + número.
+    attributes:
+      pessoa:
+        password: Senha
+        password_confirmation: Confirmação de Senha
   date:
     abbr_day_names:
     - Dom

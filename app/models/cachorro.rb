@@ -1,5 +1,6 @@
 class Cachorro < ApplicationRecord
 	enum status: [:ativo, :inativo]
+	enum sexo: [:femea, :macho]
 	has_many :passeios, foreign_key: "cachorro_1_id", class_name: "Passeio", dependent: :destroy
 	has_many :passeios, foreign_key: "cachorro_2_id", class_name: "Passeio", dependent: :destroy
 	has_many :passeios, foreign_key: "cachorro_3_id", class_name: "Passeio", dependent: :destroy
@@ -10,6 +11,7 @@ class Cachorro < ApplicationRecord
 	validates :nome, :data_de_nascimento, :sexo, :porte, :status, presence: true
 	validate :image_type
 	validates_inclusion_of :disponivel_para_passeio, :in => [true, false]
+	validate :data_de_nascimento_valida
 
 	scope :caes_ativos, -> { where(status: :ativo) }
 	scope :passeadores, -> { caes_ativos.where(disponivel_para_passeio: true) }
@@ -22,4 +24,12 @@ class Cachorro < ApplicationRecord
 		   	end
 		  end
 		end
+
+		def data_de_nascimento_valida
+	    if data_de_nascimento.present? 
+	    	if data_de_nascimento > Date.today || data_de_nascimento < Date.today - 25.year
+	      	errors.add(:data_de_nascimento, "não é válida.")
+	      end
+	    end
+	  end
 end

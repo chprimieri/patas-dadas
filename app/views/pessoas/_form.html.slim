@@ -1,29 +1,30 @@
 = form_for @pessoa, html: { class: 'ui form' } do |f|
   - if @pessoa.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@pessoa.errors.count, "erro")} impediu a gravação desse registro:"
+      h4
+        | Este registro não pôde ser salvo, devido a #{pluralize(@pessoa.errors.count, 'erro', plural: 'erros')}:
       ul
         - @pessoa.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .required.field
     = f.label :nome
     = f.text_field :nome, placeholder: 'Nome'
   .two.fields
-    .field
+    .required.field
       = f.label :data_de_nascimento
       = f.date_field :data_de_nascimento
-    .field
+    .required.field
       = f.label :telefone
-      = f.text_field :telefone, placeholder: '(51)99999-9999'
-  .field
+      = f.text_field :telefone, placeholder: 'DDD + Número'
+  .required.field
     = f.label :email
     = f.email_field :email, placeholder: 'seu_email@mail.com'
   .two.fields
-    .field
+    .required.field
       = f.label :password, 'Senha'
       = f.password_field :password, placeholder: 'Senha'
-    .field
+    .required.field
       = f.label :password_confirmation, 'Confirme a Senha'
       = f.password_field :password_confirmation, placeholder: 'Confirme a Senha'
 

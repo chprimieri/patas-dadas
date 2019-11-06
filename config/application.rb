@@ -22,5 +22,17 @@ module Vagrant
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = :local
     config.active_record.time_zone_aware_attributes = false
+
+
+    # faz campos com erro ficarem compatíveis com SemanticUI
+    # assume que haverá um js que copie essa classe pra div.field que contém o campo
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+      class_attr_index = html_tag.index 'class="'
+      if class_attr_index
+        html_tag.insert class_attr_index + 7, 'error '
+      else
+        html_tag.insert html_tag.index('>'), ' class="error"'
+      end
+    }
   end
 end

@@ -5,5 +5,5 @@ $ ->
 	$('.datahora').datetimepicker
 	        format: 'd/m/Y H:i'
 	        step: 30
-	        mask: '00/00/0000 00:00'
+	        mask: true
   # Documentação do datetimepicker: https://xdsoft.net/jqplugins/datetimepicker/

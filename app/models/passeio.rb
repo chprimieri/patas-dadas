@@ -43,17 +43,25 @@ class Passeio < ApplicationRecord
 
     def passeio_no_mesmo_horario
       Passeio.agendados.each do |passeio_existente|
-        if passeio_existente.data_e_hora.between?(data_e_hora - 1.hours, data_e_hora + 1.hours)
-          if tres_cachorros_por_vez(cachorro_1, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
-            errors.add(:cachorro_1, "Este cachorro já está com um passeio agendado nesse horário.")
-          end
 
-          if tres_cachorros_por_vez(cachorro_2, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
-            errors.add(:cachorro_2, "Este cachorro já está com um passeio agendado nesse horário.")
-          end
+        # Primeiro testa se não é o mesmo passeio, para permitir edição
+        if passeio_existente.id != self.id
 
-          if tres_cachorros_por_vez(cachorro_3, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
-            errors.add(:cachorro_3, "Este cachorro já está com um passeio agendado nesse horário.")
+          # Segundo, testa se os passeios são no mesmo horário
+          if passeio_existente.data_e_hora.between?(data_e_hora - 1.hours, data_e_hora + 1.hours)
+
+            # Por último, testa se são os mesmos cachorros
+            if tres_cachorros_por_vez(cachorro_1, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
+              errors.add(:cachorro_1, "Este cachorro já está com um passeio agendado nesse horário.")
+            end
+
+            if tres_cachorros_por_vez(cachorro_2, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
+              errors.add(:cachorro_2, "Este cachorro já está com um passeio agendado nesse horário.")
+            end
+
+            if tres_cachorros_por_vez(cachorro_3, passeio_existente.cachorro_1, passeio_existente.cachorro_2, passeio_existente.cachorro_3)
+              errors.add(:cachorro_3, "Este cachorro já está com um passeio agendado nesse horário.")
+            end
           end
         end
       end
