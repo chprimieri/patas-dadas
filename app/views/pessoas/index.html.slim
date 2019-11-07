@@ -17,8 +17,9 @@
           td = pessoa.nome
           td = pessoa.data_de_nascimento.strftime("%d-%m-%Y")
           td = pessoa.email
-          td = pessoa.telefone
+          td = number_to_phone(pessoa.telefone, pattern: /(\d{2})(\d{4,5})(\d{4})$/, area_code: true)
           td.right.aligned
+            = link_to 'Detalhes', pessoa, class: 'ui mini teal button'
             = link_to 'Editar', edit_pessoa_path(pessoa), class: 'ui mini button'
             = link_to 'Excluir', pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 

@@ -22,6 +22,9 @@ $ ->
   $('form').on 'keypress', '.search .prompt', (e) ->
     e.preventDefault() if e.keyCode == 13
 
+  $('.menu .item')
+    .tab()
+
   # hack pra exibir corretamente campos com erro no formato SemanticUI
   $(':input.error').closest('.field').addClass 'error'
 

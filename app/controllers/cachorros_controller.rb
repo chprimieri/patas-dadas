@@ -10,6 +10,8 @@ class CachorrosController < ApplicationController
   # GET /cachorros/1
   # GET /cachorros/1.json
   def show
+    @lista_de_passeios = Cachorro.find(params[:id]).passeios_1 + Cachorro.find(params[:id]).passeios_2 + Cachorro.find(params[:id]).passeios_3
+    @lista_de_passeios = @lista_de_passeios.sort_by{|e| e[:data_e_hora]}
   end
 
   # GET /cachorros/new

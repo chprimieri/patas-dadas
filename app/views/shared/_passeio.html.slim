@@ -1,0 +1,9 @@
+tr
+  td = passeio.pessoa.nome
+  td = confere_cachorros(passeio.cachorro_1, passeio.cachorro_2, passeio.cachorro_3)
+  td = passeio.status
+  td = passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
+  td
+    - if current_user == passeio.pessoa
+      = link_to 'Editar', edit_passeio_path(passeio), class: 'ui mini button'
+      = link_to 'Excluir', passeio, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'

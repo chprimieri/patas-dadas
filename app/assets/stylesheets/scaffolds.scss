@@ -86,3 +86,11 @@ div {
 label {
   display: block;
 }
+
+.message:last-child {
+  margin-bottom: 1rem !important;
+}
+
+.message:first-child {
+  margin-bottom: 1rem !important;
+}

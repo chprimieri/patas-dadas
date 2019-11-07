@@ -39,7 +39,7 @@
           td.center.aligned = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
           / td = link_to 'Show', cachorro
           td.center.aligned
-            = link_to 'Detalhes', cachorro, class: 'ui mini button'
+            = link_to 'Detalhes', cachorro, class: 'ui mini teal button'
             = link_to 'Editar', edit_cachorro_path(cachorro), class: 'ui mini button'
             = link_to 'Excluir', cachorro, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 

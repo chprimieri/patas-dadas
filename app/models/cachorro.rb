@@ -1,9 +1,8 @@
 class Cachorro < ApplicationRecord
 	enum status: [:ativo, :inativo]
-	enum sexo: [:femea, :macho]
-	has_many :passeios, foreign_key: "cachorro_1_id", class_name: "Passeio", dependent: :destroy
-	has_many :passeios, foreign_key: "cachorro_2_id", class_name: "Passeio", dependent: :destroy
-	has_many :passeios, foreign_key: "cachorro_3_id", class_name: "Passeio", dependent: :destroy
+	has_many :passeios_1, foreign_key: "cachorro_1_id", class_name: "Passeio", dependent: :destroy
+	has_many :passeios_2, foreign_key: "cachorro_2_id", class_name: "Passeio", dependent: :destroy
+	has_many :passeios_3, foreign_key: "cachorro_3_id", class_name: "Passeio", dependent: :destroy
 	has_one :dupla, class_name: 'Cachorro', foreign_key: 'dupla_id'
 	belongs_to :dupla, class_name: 'Cachorro', foreign_key: 'dupla_id', optional: true
 	has_one_attached :foto

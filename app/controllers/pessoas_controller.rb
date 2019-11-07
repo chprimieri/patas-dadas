@@ -12,6 +12,7 @@ class PessoasController < ApplicationController
   # GET /pessoas/1
   # GET /pessoas/1.json
   def show
+    @lista_de_passeios = Pessoa.find(params[:id]).passeios
   end
 
   # GET /pessoas/new
@@ -31,7 +32,10 @@ class PessoasController < ApplicationController
 
     if @pessoa.save
       redirect_to @pessoa, notice: 'Voluntário(a) cadastrado com sucesso!'
-      sign_in(@pessoa)
+
+      if current_user.nil?
+        sign_in(@pessoa)
+      end
     else
       render action: :new
     end
