@@ -25,6 +25,9 @@ $ ->
   $('.menu .item')
     .tab()
 
+  $('.ui.dropdown')
+    .dropdown()
+
   # hack pra exibir corretamente campos com erro no formato SemanticUI
   $(':input.error').closest('.field').addClass 'error'
 

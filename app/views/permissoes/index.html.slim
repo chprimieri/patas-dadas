@@ -1,0 +1,30 @@
+.ui.container
+  h1 Permissões do Sistema
+  br
+  = link_to 'Nova Permissão', new_permissao_path, class: 'ui small button'
+
+  .ui.top.attached.tabular.menu
+    .a.active.item data-tab="todos"
+      i.heart.icon
+      .content
+        | Todas os Voluntários
+    .a.item data-tab="passeadores"
+      i.map.signs.icon
+      .content
+        | Passeadores
+    .a.item data-tab="administradores"
+      i.star.icon
+      .content
+        | Administradores  
+
+  .ui.attached.tab.active.segment data-tab="todos"
+    = render partial: "listagem", locals: {permissoes: Permissao.ordenado}
+
+  .ui.attached.tab.segment data-tab="passeadores"
+    = render partial: "listagem", locals: {permissoes: Permissao.passeadores}
+
+  .ui.attached.tab.segment data-tab="administradores"
+    = render partial: "listagem", locals: {permissoes: Permissao.administradores}
+
+  br
+  = link_to 'Nova Permissão', new_permissao_path, class: 'ui small button'

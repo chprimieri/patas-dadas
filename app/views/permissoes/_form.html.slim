@@ -1,0 +1,26 @@
+= form_for @permissao, html: { class: 'ui form' } do |f|
+  - if @permissao.errors.any?
+    #error_explanation
+      h4
+        | Este registro não pôde ser salvo, devido a #{pluralize(@permissao.errors.count, 'erro', plural: 'erros')}:
+      ul
+        - @permissao.errors.full_messages.each do |message|
+          li = message
+
+  .three.fields
+    .required.field
+      = f.label :pessoa_id, 'Voluntário'
+      = f.select :pessoa_id, options_from_collection_for_select(Pessoa.ordenado, 'id', 'nome', :selected => f.object.pessoa_id), { include_blank: true }, class: 'ui fluid dropdown'
+  .inline.field
+    .ui.toggle.checkbox
+      = f.check_box :administracao
+      = f.label :administracao, 'Administrador'
+  .inline.field
+    .ui.toggle.checkbox
+      = f.check_box :passeio
+      = f.label :passeio, 'Passeador'
+
+  .ui.buttons
+    = link_to 'Voltar', permissoes_path, class: 'ui button'
+    = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
+

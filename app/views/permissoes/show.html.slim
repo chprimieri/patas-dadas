@@ -1,0 +1,16 @@
+.ui.container
+
+	h2 Permissões de Voluntário
+	p
+	  strong Voluntário: 
+	  = @permissao.pessoa.nome
+	p
+	  strong Administração: 
+	  = (@permissao.administracao ? 'Sim' : 'Não')
+	p
+	  strong Passeio: 
+	  = (@permissao.passeio ? 'Sim' : 'Não')
+
+	.ui.buttons
+		= link_to 'Voltar', permissoes_path, class: 'ui button'
+		= link_to 'Editar', edit_permissao_path(@permissao), class: 'ui primary button'

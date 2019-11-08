@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 	resources :passeios
 	resources :cachorros
 	resources :pessoas
+	resources :permissoes
   
 end

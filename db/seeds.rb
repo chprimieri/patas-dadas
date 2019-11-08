@@ -12,30 +12,30 @@ Pessoa.destroy_all
   Pessoa.create!( nome: Faker::Name.unique.name,
   								data_de_nascimento: Faker::Date.birthday(min_age: 18, max_age: 65),
                   email: Faker::Internet.unique.email,
-                  telefone: Faker::PhoneNumber.phone_number,
-                  password: "1234",
-                  password_confirmation: "1234")
+                  telefone: Faker::Number.number(digits: 11),
+                  password: "123456",
+                  password_confirmation: "123456")
 end
 
 p "Criadas #{Pessoa.count} pessoas"
 
-Cachorro.destroy_all
+# Cachorro.destroy_all
 
-50.times do |index|
-  Cachorro.create!( nome: Faker::Creature::Dog.unique.name,
-  								data_de_nascimento: Faker::Date.birthday(min_age: 0, max_age: 15),
-                  sexo: Faker::Creature::Dog.gender,
-                  porte: Faker::Creature::Dog.size,
-                  status: Faker::Number.between(from: 0, to: 1),
-                  observacoes: Faker::Lorem.paragraph,
-                  equipamento: Faker::Hipster.word,
-                  frequencia: Faker::Number.between(from: 3, to: 5),
-                  duracao: Faker::Number.between(from: 30, to: 60),
-                  areas: Faker::Address.community,
-                  disponivel_para_passeio: Faker::Boolean.boolean)
-end
+# 50.times do |index|
+#   Cachorro.create!( nome: Faker::Creature::Dog.unique.name,
+#   								data_de_nascimento: Faker::Date.birthday(min_age: 0, max_age: 15),
+#                   sexo: Faker::Creature::Dog.gender,
+#                   porte: Faker::Creature::Dog.size,
+#                   status: Faker::Number.between(from: 0, to: 1),
+#                   observacoes: Faker::Lorem.paragraph,
+#                   equipamento: Faker::Hipster.word,
+#                   frequencia: Faker::Number.between(from: 3, to: 5),
+#                   duracao: Faker::Number.between(from: 30, to: 60),
+#                   areas: Faker::Address.community,
+#                   disponivel_para_passeio: Faker::Boolean.boolean)
+# end
 
-p "Criados #{Cachorro.count} cachorros"
+# p "Criados #{Cachorro.count} cachorros"
 
 # Passeio.destroy_all
 

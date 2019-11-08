@@ -19,13 +19,13 @@
   .three.fields
     .required.field
       = f.label :cachorro_1_id, 'Cachorro 1'
-      = f.select :cachorro_1_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_1_id), include_blank: true
+      = f.select :cachorro_1_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_1_id), { include_blank: true }, class: 'ui fluid dropdown'
     .field
       = f.label :cachorro_2_id, 'Cachorro 2'
-      = f.select :cachorro_2_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_2_id), include_blank: true
+      = f.select :cachorro_2_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_2_id), { include_blank: true }, class: 'ui fluid dropdown'
     .field
       = f.label :cachorro_3_id, 'Cachorro 3'
-      = f.select :cachorro_3_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_3_id), include_blank: true
+      = f.select :cachorro_3_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_3_id), { include_blank: true }, class: 'ui fluid dropdown'
 
   .ui.buttons
     = link_to 'Voltar', passeios_path, class: 'ui button'

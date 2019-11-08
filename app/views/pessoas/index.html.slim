@@ -2,6 +2,7 @@
   h1 Voluntários do Patas Dadas
   br
   = link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'
+
   table.ui.very.basic.selectable.table
     thead
       tr
@@ -12,7 +13,7 @@
         th
 
     tbody
-      - @pessoas.each do |pessoa|
+      - Pessoa.ordenado.each do |pessoa|
         tr
           td = pessoa.nome
           td = pessoa.data_de_nascimento.strftime("%d-%m-%Y")
@@ -24,5 +25,4 @@
             = link_to 'Excluir', pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 
   br
-
   = link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'

@@ -12,8 +12,9 @@ class Cachorro < ApplicationRecord
 	validates_inclusion_of :disponivel_para_passeio, :in => [true, false]
 	validate :data_de_nascimento_valida
 
-	scope :ativos, -> { where(status: :ativo) }
-	scope :inativos, -> { where(status: :inativo) }
+	scope :ordenado, -> { order(nome: :asc) }
+	scope :ativos, -> { ordenado.where(status: :ativo) }
+	scope :inativos, -> { ordenado.where(status: :inativo) }
 	scope :passeadores, -> { ativos.where(disponivel_para_passeio: true) }
 
 	private

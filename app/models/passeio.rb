@@ -10,9 +10,10 @@ class Passeio < ApplicationRecord
   validate :confere_cachorro_repetido
   validate :passeio_no_mesmo_horario
 
-  scope :agendados, -> { where(status: :agendado) }
-  scope :realizados, -> { where(status: :realizado) }
-  scope :cancelados, -> { where(status: :cancelado) }
+  scope :ordenado, -> { order(data_e_hora: :desc) }
+  scope :agendados, -> { ordenado.where(status: :agendado) }
+  scope :realizados, -> { ordenado.where(status: :realizado) }
+  scope :cancelados, -> { ordenado.where(status: :cancelado) }
 
   def mudanca_de_status
     Passeio.agendados.each do |passeio|

@@ -1,0 +1,19 @@
+tr
+  td = permissao.pessoa.nome
+  - if permissao.passeio
+    td.center.aligned
+      i.green.check.icon
+  - else
+    td.center.aligned
+      i.red.times.icon          
+
+  - if permissao.administracao
+    td.center.aligned
+      i.green.check.icon
+  - else
+    td.center.aligned
+      i.red.times.icon   
+
+  td.right.aligned
+    = link_to 'Editar', edit_permissao_path(permissao), class: 'ui mini button'
+    = link_to 'Excluir', permissao, data: { confirm: 'Você tem certeza?' }, method: :delete, class: 'ui mini negative button'
