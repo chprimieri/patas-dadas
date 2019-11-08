@@ -1,0 +1,19 @@
+tr
+  td 
+    - if cachorro.foto.attached?
+      = image_tag cachorro.foto.variant(resize: "70x70"), class: 'ui centered circular image'
+  td = cachorro.nome
+  td.center.aligned = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
+  td.center.aligned = cachorro.sexo
+  td.center.aligned = cachorro.porte
+  / td.center.aligned = cachorro.status
+  / td = cachorro.equipamento
+  / td = cachorro.frequencia
+  / td = cachorro.duracao
+  / td = cachorro.areas
+  / td.center.aligned = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
+  / td = link_to 'Show', cachorro
+  td.center.aligned
+    = link_to 'Detalhes', cachorro, class: 'ui mini teal button'
+    = link_to 'Editar', edit_cachorro_path(cachorro), class: 'ui mini button'
+    = link_to 'Excluir', cachorro, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'

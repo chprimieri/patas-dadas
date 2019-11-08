@@ -10,20 +10,7 @@ html
     = favicon_link_tag asset_path('paw.png')
 
   body
-    nav.ui.top.massive.borderless.menu#menu_principal
-      .ui.container
-        = link_to main_app.root_path, class: :item do
-          = image_tag 'patasdadas-header-logo.png', alt: 'Voluntários - Patas Dadas'
-
-          .right.menu
-            = link_to 'Pessoas', pessoas_path, class: 'ui simple item'
-            = link_to 'Cachorros', cachorros_path, class: 'ui simple item'
-            = link_to 'Passeios', passeios_path, class: 'ui simple item'
-            .item
-              - if logged_in? 
-                = link_to 'Log out', sign_out_path, method: 'delete', class: 'ui mini teal button'
-              - else
-                = link_to 'Log in', sign_in_path, class: 'ui mini teal button'
+    = render partial: "shared/menu"
 
     - if flash.any?
       .ui.container

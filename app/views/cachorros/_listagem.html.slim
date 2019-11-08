@@ -1,0 +1,19 @@
+table.ui.very.basic.selectable.table
+  thead
+    tr
+      th 
+      th Nome
+      th.center.aligned Data de nascimento
+      th.center.aligned Sexo
+      th.center.aligned Porte
+      / th.center.aligned Status
+      / th Equipamento
+      / th Frequência
+      / th Duração
+      / th Áreas
+      / th.center.aligned Passeio
+      / th
+      th
+
+  tbody
+    = render partial: "cachorro", collection: cachorros

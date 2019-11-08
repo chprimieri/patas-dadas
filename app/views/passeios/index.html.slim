@@ -3,26 +3,28 @@
   br
   = link_to 'Cadastrar Novo Passeio', new_passeio_path, class: 'ui small button'
   
-  table.ui.very.basic.selectable.table
-    thead
-      tr
-        th Pessoa
-        th Cachorros
-        th Status
-        th Data e hora
-        th
+  .ui.top.attached.tabular.menu
+    .a.active.item data-tab="agendados"
+      i.calendar.alternate.icon
+      .content
+        | Passeios Agendados
+    .a.item data-tab="realizados"
+      i.check.icon
+      .content
+        | Passeios Realizados
+    .a.item data-tab="cancelados"
+      i.times.icon
+      .content
+        | Passeios Cancelados  
 
-    tbody
-      - @passeios.each do |passeio|
-        tr
-          td = passeio.pessoa.nome
-          td = confere_cachorros(passeio.cachorro_1, passeio.cachorro_2, passeio.cachorro_3)
-          td = passeio.status
-          td = passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
-          td
-            - if current_user == passeio.pessoa
-              = link_to 'Editar', edit_passeio_path(passeio), class: 'ui mini button'
-              = link_to 'Excluir', passeio, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
+  .ui.attached.tab.active.segment data-tab="agendados"
+    = render partial: "listagem", locals: {passeios: Passeio.agendados}
+
+  .ui.attached.tab.segment data-tab="realizados"
+    = render partial: "listagem", locals: {passeios: Passeio.realizados}
+
+  .ui.attached.tab.segment data-tab="cancelados"
+    = render partial: "listagem", locals: {passeios: Passeio.cancelados}
 
   br
 

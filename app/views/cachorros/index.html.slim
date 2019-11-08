@@ -4,44 +4,28 @@
   
   = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
 
-  table.ui.very.basic.selectable.table
-    thead
-      tr
-        th 
-        th Nome
-        th.center.aligned Data de nascimento
-        th.center.aligned Sexo
-        th.center.aligned Porte
-        th.center.aligned Status
-        / th Equipamento
-        / th Frequência
-        / th Duração
-        / th Áreas
-        th.center.aligned Passeio
-        / th
-        th
+  .ui.top.attached.tabular.menu
+    .a.active.item data-tab="passeadores"
+      i.map.signs.icon
+      .content
+        | Cachorros Passeadores
+    .a.item data-tab="ativos"
+      i.heart.icon
+      .content
+        | Cachorros Ativos
+    .a.item data-tab="inativos"
+      i.star.icon
+      .content
+        | Cachorros Inativos  
 
-    tbody
-      - @cachorros.each do |cachorro|
-        tr
-          td 
-            - if cachorro.foto.attached?
-              = image_tag cachorro.foto.variant(resize: "70x70"), class: 'ui centered circular image'
-          td = cachorro.nome
-          td.center.aligned = cachorro.data_de_nascimento.strftime("%d-%m-%Y")
-          td.center.aligned = cachorro.sexo
-          td.center.aligned = cachorro.porte
-          td.center.aligned = cachorro.status
-          / td = cachorro.equipamento
-          / td = cachorro.frequencia
-          / td = cachorro.duracao
-          / td = cachorro.areas
-          td.center.aligned = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
-          / td = link_to 'Show', cachorro
-          td.center.aligned
-            = link_to 'Detalhes', cachorro, class: 'ui mini teal button'
-            = link_to 'Editar', edit_cachorro_path(cachorro), class: 'ui mini button'
-            = link_to 'Excluir', cachorro, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
+  .ui.attached.tab.active.segment data-tab="passeadores"
+    = render partial: "listagem", locals: {cachorros: Cachorro.passeadores}
+
+  .ui.attached.tab.segment data-tab="ativos"
+    = render partial: "listagem", locals: {cachorros: Cachorro.ativos}
+
+  .ui.attached.tab.segment data-tab="inativos"
+    = render partial: "listagem", locals: {cachorros: Cachorro.inativos}
 
   br
 

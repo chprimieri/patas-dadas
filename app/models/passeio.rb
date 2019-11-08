@@ -11,11 +11,13 @@ class Passeio < ApplicationRecord
   validate :passeio_no_mesmo_horario
 
   scope :agendados, -> { where(status: :agendado) }
+  scope :realizados, -> { where(status: :realizado) }
+  scope :cancelados, -> { where(status: :cancelado) }
 
   def mudanca_de_status
     Passeio.agendados.each do |passeio|
       if passeio.data_e_hora < Time.now()
-        passeio.status = 1
+        passeio.status = "realizado"
       end
     end
   end

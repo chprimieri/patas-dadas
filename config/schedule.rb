@@ -5,6 +5,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
+every 15.minutes do # Many shortcuts available: :hour, :day, :month, :year, :reboot
   runner "Passeio.mudanca_de_status"
 end

@@ -29,9 +29,12 @@ class PasseiosController < ApplicationController
     @passeio = Passeio.new(passeio_params)
     @passeio.pessoa_id = current_user.id
 
+
     if @passeio.data_e_hora > Time.now()
+      # O passeio é agendado se o dia e hora forem no futuro
       @passeio.status = 0
     else
+      # O passeio é realizado se o dia e hora forem no passado ou presente
       @passeio.status = 1
     end
 
@@ -78,7 +81,7 @@ class PasseiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def passeio_params
-      params.require(:passeio).permit(:cachorro_1_id, :cachorro_2_id, :cachorro_3_id, :data_e_hora)
+      params.require(:passeio).permit(:cachorro_1_id, :cachorro_2_id, :cachorro_3_id, :status, :data_e_hora)
     end
 
 end
