@@ -1,7 +1,10 @@
 class PessoasController < ApplicationController
   before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
+  # confere se as pessoas estão logadas para acessar as páginas, com exceção do cadastro inicial
   before_action :authorize, except: [:new, :create]
-  before_action :correct_user?, only: [:edit, :update, :destroy]
+  # confere se é administrador ou o usuário correto para exibir, editar e excluir seus dados
+  before_action :correct_user?, only: [:show, :edit, :update, :destroy]
+  before_action :somente_administrador, only: [:index]
 
   # GET /pessoas
   # GET /pessoas.json
@@ -61,8 +64,12 @@ class PessoasController < ApplicationController
   # DELETE /pessoas/1.json
   def destroy
     @pessoa = Pessoa.find(params[:id])
+
+    if current_user == @pessoa
+      sign_out
+    end
     @pessoa.destroy
-    sign_out
+
     respond_to do |format|
       format.html { redirect_to pessoas_url, notice: 'Dados do voluntário(a) apagados.' }
       format.json { head :no_content }

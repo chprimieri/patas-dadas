@@ -1,43 +1,41 @@
-.ui.container
-  .ui.top.attached.tabular.menu
-    .a.active.item data-tab="informacoes"
-      i.id.badge.icon
-      .content
-        | Informações do Voluntário
-    .a.item data-tab="passeios"
-      i.tasks.icon
-      .content
-        | Passeios do Voluntário        
+.ui.top.attached.tabular.menu
+  .a.active.item data-tab="informacoes"
+    i.id.badge.icon
+    .content
+      | Informações do Voluntário
+  .a.item data-tab="passeios"
+    i.tasks.icon
+    .content
+      | Passeios do Voluntário        
 
-  .ui.attached.tab.active.segment data-tab="informacoes"
-    p
-      strong Nome: 
-      = @pessoa.nome
-    p
-      strong Data de nascimento: 
-      = @pessoa.data_de_nascimento.strftime("%d-%m-%Y")
-    p
-      strong Email: 
-      = @pessoa.email
-    p
-      strong Telefone: 
-      = number_to_phone(@pessoa.telefone, pattern: /(\d{2})(\d{4,5})(\d{4})$/, area_code: true)
+.ui.attached.tab.active.segment data-tab="informacoes"
+  p
+    strong Nome: 
+    = @pessoa.nome
+  p
+    strong Data de nascimento: 
+    = @pessoa.data_de_nascimento.strftime("%d-%m-%Y")
+  p
+    strong Email: 
+    = @pessoa.email
+  p
+    strong Telefone: 
+    = number_to_phone(@pessoa.telefone, pattern: /(\d{2})(\d{4,5})(\d{4})$/, area_code: true)
 
-    .ui.buttons
-      = link_to 'Voltar', pessoas_path, class: 'ui button'
-      - if  current_user == @pessoa
-        => link_to 'Excluir', @pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui negative button'
-        => link_to 'Editar', edit_pessoa_path(@pessoa), class: 'ui primary button'
+  .ui.buttons
+    = link_to 'Voltar', pessoas_path, class: 'ui button'
+    => link_to 'Excluir', @pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui negative button'
+    => link_to 'Editar', edit_pessoa_path(@pessoa), class: 'ui primary button'
 
-  .ui.attached.tab.segment data-tab="passeios"
-    table.ui.very.basic.selectable.table
-      thead
-        tr
-          th Pessoa
-          th Cachorros
-          th Status
-          th Data e hora
-          th
+.ui.attached.tab.segment data-tab="passeios"
+  table.ui.very.basic.selectable.table
+    thead
+      tr
+        th Pessoa
+        th Cachorros
+        th Status
+        th Data e hora
+        th
 
-      tbody
-        = render partial: "shared/passeio", collection: @lista_de_passeios
+    tbody
+      = render partial: "shared/passeio", collection: @lista_de_passeios

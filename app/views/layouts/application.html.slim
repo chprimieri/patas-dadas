@@ -10,10 +10,10 @@ html
     = favicon_link_tag asset_path('paw.png')
 
   body
-    = render partial: "shared/menu"
+    = render partial: "layouts/menu"
 
-    - if flash.any?
-      .ui.container
+    .ui.container
+      - if flash.any?
         - flash.each do |nome, mensagem|
           - classe = case nome
           - when 'notice' then :success
@@ -23,4 +23,5 @@ html
           div class=("ui visible large #{classe} message") 
             i.close.icon
             = raw mensagem
-    = yield
+
+      = yield

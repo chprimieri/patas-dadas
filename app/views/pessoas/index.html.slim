@@ -1,28 +1,27 @@
-.ui.container
-  h1 Voluntários do Patas Dadas
-  br
-  = link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'
+h1 Voluntários do Patas Dadas
+br
+= link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'
 
-  table.ui.very.basic.selectable.table
-    thead
+table.ui.very.basic.selectable.table
+  thead
+    tr
+      th Nome
+      th Data de Nascimento
+      th Email
+      th Telefone
+      th
+
+  tbody
+    - Pessoa.ordenado.each do |pessoa|
       tr
-        th Nome
-        th Data de Nascimento
-        th Email
-        th Telefone
-        th
+        td = pessoa.nome
+        td = pessoa.data_de_nascimento.strftime("%d-%m-%Y")
+        td = pessoa.email
+        td = number_to_phone(pessoa.telefone, pattern: /(\d{2})(\d{4,5})(\d{4})$/, area_code: true)
+        td.right.aligned
+          = link_to 'Detalhes', pessoa, class: 'ui mini teal button'
+          = link_to 'Editar', edit_pessoa_path(pessoa), class: 'ui mini button'
+          = link_to 'Excluir', pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
 
-    tbody
-      - Pessoa.ordenado.each do |pessoa|
-        tr
-          td = pessoa.nome
-          td = pessoa.data_de_nascimento.strftime("%d-%m-%Y")
-          td = pessoa.email
-          td = number_to_phone(pessoa.telefone, pattern: /(\d{2})(\d{4,5})(\d{4})$/, area_code: true)
-          td.right.aligned
-            = link_to 'Detalhes', pessoa, class: 'ui mini teal button'
-            = link_to 'Editar', edit_pessoa_path(pessoa), class: 'ui mini button'
-            = link_to 'Excluir', pessoa, data: { confirm: 'Confirma a exclusão?' }, method: :delete, class: 'ui mini negative button'
-
-  br
-  = link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'
+br
+= link_to 'Cadastrar Novo Voluntário', new_pessoa_path, class: 'ui small button'

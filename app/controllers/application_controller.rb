@@ -9,9 +9,11 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_user?
-    @pessoa = Pessoa.find(params[:id])
-    unless current_user == @pessoa
-      redirect_to pessoas_path, alert: 'Usuário não possui permissão de acesso.'
+    unless current_user.present? && current_user.permissao.administracao
+      @pessoa = Pessoa.find(params[:id])
+      unless current_user == @pessoa
+        redirect_to root_url, alert: 'Usuário não possui permissão de acesso.'
+      end      
     end
   end
 
@@ -22,4 +24,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def somente_administrador
+    unless current_user.present? && current_user.permissao.administracao
+      redirect_to root_url, alert: 'Usuário não possui permissão de acesso.'
+    end
+  end
 end

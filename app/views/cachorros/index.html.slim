@@ -1,32 +1,31 @@
-.ui.container
-  h1 Cachorros do Patas Dadas
-  br
-  
-  = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
+h1 Cachorros do Patas Dadas
+br
 
-  .ui.top.attached.tabular.menu
-    .a.active.item data-tab="passeadores"
-      i.map.signs.icon
-      .content
-        | Cachorros Passeadores
-    .a.item data-tab="ativos"
-      i.heart.icon
-      .content
-        | Cachorros Ativos
-    .a.item data-tab="inativos"
-      i.star.icon
-      .content
-        | Cachorros Inativos  
+= link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
 
-  .ui.attached.tab.active.segment data-tab="passeadores"
-    = render partial: "listagem", locals: {cachorros: Cachorro.passeadores}
+.ui.top.attached.tabular.menu
+  .a.active.item data-tab="passeadores"
+    i.map.signs.icon
+    .content
+      | Cachorros Passeadores
+  .a.item data-tab="ativos"
+    i.heart.icon
+    .content
+      | Cachorros Ativos
+  .a.item data-tab="inativos"
+    i.star.icon
+    .content
+      | Cachorros Inativos  
 
-  .ui.attached.tab.segment data-tab="ativos"
-    = render partial: "listagem", locals: {cachorros: Cachorro.ativos}
+.ui.attached.tab.active.segment data-tab="passeadores"
+  = render partial: "listagem", locals: {cachorros: Cachorro.passeadores}
 
-  .ui.attached.tab.segment data-tab="inativos"
-    = render partial: "listagem", locals: {cachorros: Cachorro.inativos}
+.ui.attached.tab.segment data-tab="ativos"
+  = render partial: "listagem", locals: {cachorros: Cachorro.ativos}
 
-  br
+.ui.attached.tab.segment data-tab="inativos"
+  = render partial: "listagem", locals: {cachorros: Cachorro.inativos}
 
-  = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
+br
+
+= link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'

@@ -1,23 +1,25 @@
-.ui.container
-	h1 Voluntários do Patas Dadas
+h1 Voluntários do Patas Dadas
 
-	.ui.two.column.centered.grid
-		.eight.wide.column
-			= image_tag 'barry_do_patas.jpg', class: 'ui fluid rounded image', alt: 'Voluntários - Patas Dadas'
+.ui.two.column.centered.grid
+	.eight.wide.column
+		= image_tag 'barry_do_patas.jpg', class: 'ui fluid rounded image', alt: 'Voluntários - Patas Dadas'
 
-		.eight.wide.column
-			- if logged_in?
-				h3 Vá passear com um dog!
-			- else
-				h3 Acesso ao Sistema
-				= form_for :session, url: sign_in_path, html: { class: 'ui form' } do |f|
-				  .field
-				    = f.label :email
-				    = f.email_field :email, autofocus: true
-				  .field
-				    = f.label :password
-				    = f.password_field :password, autocomplete: "off"
-				  = f.submit 'Entrar', class: 'ui primary button', data: { disable_with: 'Entrando...' }
+	.eight.wide.column
+		.ui.icon.message
+		  i.exclamation.triangle.icon
+		  .content
+		    .header
+		      | Sistema em desenvolvimento!
+		    p Os dados aqui contidos são fictícios e apenas para testes.
 
-				  p
-				    | Novo voluntário? #{link_to "Cadastre-se!", new_pessoa_path}
+		h3 Este sistema busca aproximar voluntários e cachorros, a fim de proporcionar mais qualidade de vida aos peludos. 
+		h3 Aqui você poderá agendar passeios com os cachorros do Patas Dadas, respeitando as característica de cada animal e a organização da ONG. 
+		h3 Futuramente, esperamos que o sistema possa fazer mais!
+
+		.ui.divider
+
+		- if logged_in?
+			h3 Vá passear com um dog!
+		- else
+			h3 Acesso ao Sistema
+			= render partial: "shared/signin_form"
