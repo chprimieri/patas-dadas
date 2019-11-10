@@ -1,7 +1,7 @@
 h1 Cachorros do Patas Dadas
 br
-
-= link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
+- if administrador?
+  = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
 
 .ui.top.attached.tabular.menu
   .a.active.item data-tab="passeadores"
@@ -28,4 +28,5 @@ br
 
 br
 
-= link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
+- if administrador?
+  = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'

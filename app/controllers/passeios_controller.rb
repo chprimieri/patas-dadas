@@ -1,7 +1,13 @@
 class PasseiosController < ApplicationController
   before_action :set_passeio, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, except: [:index, :show]
-  before_action :correct_user_passeios?, only: [:edit, :update, :destroy]
+  # Apenas usuário logados podem acessar páginas da classe Passeio
+  before_action :autenticado
+  # Apenas usuários com permissão de passeador ou administrador podem acessar as páginas de Passeio
+  before_action :somente_passeador_ou_admin
+  # Para edição e exclusão, tem que ser do próprio usuário ou ter permissões de administrador
+  before_action only: [:edit, :update, :destroy] do
+    usuario_correto_ou_admin? ( Passeio.find(params[:id]).pessoa )
+  end
 
   # GET /passeios
   # GET /passeios.json

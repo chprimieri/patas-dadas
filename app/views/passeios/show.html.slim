@@ -12,5 +12,6 @@ p
   = @passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
 
 .ui.buttons
-	= link_to 'Voltar', passeios_path, class: 'ui button'
-	=> link_to 'Editar', edit_passeio_path(@passeio), class: 'ui primary button'
+  = link_to 'Voltar', passeios_path, class: 'ui button'
+  - if current_user == @passeio.pessoa || administrador?
+    => link_to 'Editar', edit_passeio_path(@passeio), class: 'ui primary button'

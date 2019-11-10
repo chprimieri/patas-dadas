@@ -1,9 +1,11 @@
 class PessoasController < ApplicationController
   before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
   # confere se as pessoas estão logadas para acessar as páginas, com exceção do cadastro inicial
-  before_action :authorize, except: [:new, :create]
+  before_action :autenticado, except: [:new, :create] 
   # confere se é administrador ou o usuário correto para exibir, editar e excluir seus dados
-  before_action :correct_user?, only: [:show, :edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy] do
+    usuario_correto_ou_admin? ( Pessoa.find(params[:id]) )
+  end
   before_action :somente_administrador, only: [:index]
 
   # GET /pessoas

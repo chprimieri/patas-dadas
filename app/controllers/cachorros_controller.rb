@@ -1,5 +1,9 @@
 class CachorrosController < ApplicationController
   before_action :set_cachorro, only: [:show, :edit, :update, :destroy]
+  # confere se as pessoas estão logadas para acessar as páginas, com exceção da lista e do show dos cachorros
+  before_action :autenticado, except: [:index, :show]
+  # apenas administradores podem incluir, alterar ou excluir cachorros
+  before_action :somente_administrador, except: [:index, :show]
 
   # GET /cachorros
   # GET /cachorros.json
@@ -61,10 +65,6 @@ class CachorrosController < ApplicationController
       format.html { redirect_to cachorros_url, notice: 'Dados apagados.' }
       format.json { head :no_content }
     end
-  end
-
-  def ranking
-
   end
 
   private

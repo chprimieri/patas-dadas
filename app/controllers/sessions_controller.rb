@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if @pessoa && @pessoa.authenticate(params[:session][:password])
       sign_in @pessoa
-    	redirect_to @pessoa, notice: 'Bem-vindo de volta!'
+    	redirect_to @pessoa, notice: 'Bem-vindo(a) de volta!'
 		else
       redirect_to sign_in_path, alert: 'Usuário e/ou senha incorretos!'
 		end

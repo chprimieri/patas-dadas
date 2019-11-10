@@ -55,7 +55,8 @@
 
       .ui.buttons
         = link_to 'Voltar', cachorros_path, class: 'ui button'
-        = link_to 'Editar', edit_cachorro_path(@cachorro), class: 'ui primary button'
+        - if administrador?
+          = link_to 'Editar', edit_cachorro_path(@cachorro), class: 'ui primary button'
 
 .ui.attached.tab.segment data-tab="passeios"
   table.ui.very.basic.selectable.table

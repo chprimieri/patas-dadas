@@ -1,5 +1,8 @@
 class PermissoesController < ApplicationController
   before_action :set_permissao, only: [:show, :edit, :update, :destroy]
+  before_action :autenticado
+  # apenas administradores tem acesso as páginas da classe Permissão
+  before_action :somente_administrador
 
   # GET /permissoes
   # GET /permissoes.json
