@@ -13,14 +13,17 @@ h1 Voluntários do Patas Dadas
 		      | Sistema em desenvolvimento!
 		    p Os dados aqui contidos são fictícios e apenas para testes.
 
-		p Este sistema busca aproximar voluntários e cachorros, a fim de proporcionar mais qualidade de vida aos peludos. 
-		p Aqui você poderá agendar passeios com os cachorros do Patas Dadas, respeitando as característica de cada animal e a organização da ONG. 
-		p Futuramente, esperamos que o sistema possa fazer mais!
-
-		.ui.divider
-
 		- if logged_in?
 			h3 Vá passear com um dog!
 		- else
 			h3 Acesso ao Sistema
 			= render partial: "shared/signin_form"
+
+		.ui.divider
+		
+		p Este sistema busca aproximar voluntários e cachorros, a fim de proporcionar mais qualidade de vida aos peludos. 
+		p Aqui você poderá agendar passeios com os cachorros do Patas Dadas, respeitando as característica de cada animal e a organização da ONG. 
+		p Futuramente, esperamos que o sistema possa fazer mais!
+
+
+
