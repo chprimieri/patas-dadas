@@ -15,7 +15,7 @@ test:
   database: patas_dadas_test
   username: vagrant
   password: vagrant_pass
-  
+
 production:
   <<: *default
   database: patas_dadas_production
