@@ -1,29 +1,31 @@
-h1 Voluntários do Patas Dadas
+.ui.icon.message
+  i.exclamation.triangle.icon
+  .content
+    .header
+      | Sistema em desenvolvimento!
+    p Os dados aqui contidos são fictícios e apenas para testes.
 
-.ui.two.column.centered.grid
-	.eight.wide.column
-		= image_tag 'barry_do_patas.jpg', class: 'ui fluid rounded image', alt: 'Voluntários - Patas Dadas'
-		= label_tag :label, 'Barry do Patas (Foto: Cusco Pics)'
+.ui.segment
+	.ui.two.column.very.relaxed.stackable.grid
+		.column
+			= image_tag 'barry_do_patas.jpg', class: 'ui fluid rounded image', alt: 'Voluntários - Patas Dadas'
+			= label_tag :label, 'Barry do Patas (Foto: Cusco Pics)'
 
-	.eight.wide.column
-		.ui.icon.message
-		  i.exclamation.triangle.icon
-		  .content
-		    .header
-		      | Sistema em desenvolvimento!
-		    p Os dados aqui contidos são fictícios e apenas para testes.
+		.middle.aligned.column
+			h1 Voluntários do Patas Dadas
 
-		- if logged_in?
-			h3 Vá passear com um dog!
-		- else
-			h3 Acesso ao Sistema
-			= render partial: "shared/signin_form"
+			- if logged_in?
+				h3 Vá passear com um dog!
+			- else
+				h3 Acesso ao Sistema
+				= render partial: "shared/signin_form"
 
-		.ui.divider
-		
-		p Este sistema busca aproximar voluntários e cachorros, a fim de proporcionar mais qualidade de vida aos peludos. 
-		p Aqui você poderá agendar passeios com os cachorros do Patas Dadas, respeitando as característica de cada animal e a organização da ONG. 
-		p Futuramente, esperamos que o sistema possa fazer mais!
+	.ui.vertical.divider
+		i.heart.icon
+
+/ 		p Este sistema busca aproximar voluntários e cachorros, a fim de proporcionar mais qualidade de vida aos peludos. 
+/ 		p Aqui você poderá agendar passeios com os cachorros do Patas Dadas, respeitando as característica de cada animal e a organização da ONG. 
+/ 		p Futuramente, esperamos que o sistema possa fazer mais!
 
 
 
