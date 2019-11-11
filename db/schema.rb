@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_11_08_180039) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -47,15 +50,15 @@ ActiveRecord::Schema.define(version: 2019_11_08_180039) do
     t.boolean "disponivel_para_passeio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "dupla_id"
+    t.bigint "dupla_id"
     t.index ["dupla_id"], name: "index_cachorros_on_dupla_id"
   end
 
   create_table "passeios", force: :cascade do |t|
-    t.integer "pessoa_id"
-    t.integer "cachorro_1_id"
-    t.integer "cachorro_2_id"
-    t.integer "cachorro_3_id"
+    t.bigint "pessoa_id"
+    t.bigint "cachorro_1_id"
+    t.bigint "cachorro_2_id"
+    t.bigint "cachorro_3_id"
     t.datetime "data_e_hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_180039) do
   end
 
   create_table "permissoes", force: :cascade do |t|
-    t.integer "pessoa_id"
+    t.bigint "pessoa_id"
     t.boolean "administracao"
     t.boolean "passeio"
     t.datetime "created_at", null: false
@@ -86,4 +89,10 @@ ActiveRecord::Schema.define(version: 2019_11_08_180039) do
     t.index ["email"], name: "index_pessoas_on_email"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "passeios", "cachorros", column: "cachorro_1_id"
+  add_foreign_key "passeios", "cachorros", column: "cachorro_2_id"
+  add_foreign_key "passeios", "cachorros", column: "cachorro_3_id"
+  add_foreign_key "passeios", "pessoas"
+  add_foreign_key "permissoes", "pessoas"
 end
