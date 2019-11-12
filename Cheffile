@@ -7,5 +7,6 @@ cookbook 'vim'
 
 cookbook 'ruby_rbenv'
 cookbook 'yarn'
+cookbook 'locale', git: 'https://github.com/ChowOps/chef-locale'
 # cookbook 'freetds'
 cookbook 'postgresql', git: 'https://github.com/ChowOps/chef-postgresql'

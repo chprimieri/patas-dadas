@@ -35,13 +35,14 @@ class PasseiosController < ApplicationController
     @passeio = Passeio.new(passeio_params)
     @passeio.pessoa_id = current_user.id
 
-
-    if @passeio.data_e_hora > Time.now()
-      # O passeio é agendado se o dia e hora forem no futuro
-      @passeio.status = 0
-    else
-      # O passeio é realizado se o dia e hora forem no passado ou presente
-      @passeio.status = 1
+    if @passeio.data_e_hora.present?
+      if @passeio.data_e_hora > Time.now()
+        # O passeio é agendado se o dia e hora forem no futuro
+        @passeio.status = 0
+      else
+        # O passeio é realizado se o dia e hora forem no passado ou presente
+        @passeio.status = 1
+      end
     end
 
     respond_to do |format|

@@ -17,6 +17,13 @@ SITE
       apt (>= 0.0.0)
 
 GIT
+  remote: https://github.com/ChowOps/chef-locale
+  ref: master
+  sha: 1a035ff9758865d4fcbcf7a28a5132eb99dac414
+  specs:
+    locale (1.0.0)
+
+GIT
   remote: https://github.com/ChowOps/chef-postgresql
   ref: master
   sha: d96c938e6ab18641b2bfced686fd3dc24320c857
@@ -27,6 +34,7 @@ GIT
 DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
+  locale (>= 0)
   postgresql (>= 0)
   ruby_rbenv (>= 0)
   vim (>= 0)
