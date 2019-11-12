@@ -25,6 +25,7 @@ Vagrant.configure(2) do |config|
     # chef.add_recipe "nodejs"
     chef.add_recipe "vim"
     chef.add_recipe "yarn::default"
+    chef.add_recipe "locale"
     chef.add_recipe "postgresql::server"
     chef.add_recipe "postgresql::client"
 
