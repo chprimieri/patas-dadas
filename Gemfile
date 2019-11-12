@@ -71,3 +71,4 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'jquery-rails'
 gem 'rails-assets-datetimepicker'
 gem 'whenever', '~> 0.9.4'
+gem "aws-sdk-s3", require: false
