@@ -15,7 +15,7 @@
     - if @passeio.persisted?
       .required.field
         = f.label :status
-        = f.select :status, Passeio.status.keys.to_a
+        = f.select :status, Passeio.status.keys.to_a, { include_blank: true }, class: 'ui fluid dropdown'
   .three.fields
     .required.field
       = f.label :cachorro_1_id, 'Cachorro 1'

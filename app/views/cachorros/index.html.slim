@@ -1,4 +1,4 @@
-h1 Cachorros do Patas Dadas
+h1 Cães do Patas Dadas
 br
 - if administrador?
   = link_to 'Cadastrar Novo Cachorro', new_cachorro_path, class: 'ui small button'
@@ -7,15 +7,15 @@ br
   .a.active.item data-tab="passeadores"
     i.map.signs.icon
     .content
-      | Cachorros Passeadores
+      | Cães Passeadores
   .a.item data-tab="ativos"
     i.heart.icon
     .content
-      | Cachorros Ativos
+      | Cães Ativos
   .a.item data-tab="inativos"
     i.star.icon
     .content
-      | Cachorros Inativos  
+      | Cães Inativos  
 
 .ui.attached.tab.active.segment data-tab="passeadores"
   = render partial: "listagem", locals: {cachorros: Cachorro.passeadores}

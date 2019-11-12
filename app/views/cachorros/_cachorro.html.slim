@@ -12,7 +12,6 @@ tr
   / td = cachorro.duracao
   / td = cachorro.areas
   / td.center.aligned = (cachorro.disponivel_para_passeio ? 'Sim' : 'Não')
-  / td = link_to 'Show', cachorro
   td.center.aligned
     = link_to 'Detalhes', cachorro, class: 'ui mini teal button'
     - if administrador?

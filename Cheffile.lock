@@ -5,6 +5,7 @@ SITE
     build-essential (8.2.1)
       mingw (>= 1.1)
       seven_zip (>= 0.0.0)
+    locale (2.1.0)
     mingw (2.1.0)
       seven_zip (>= 0.0.0)
     ruby_rbenv (2.1.2)
@@ -15,9 +16,18 @@ SITE
     yarn (0.4.2)
       apt (>= 0.0.0)
 
+GIT
+  remote: https://github.com/ChowOps/chef-postgresql
+  ref: master
+  sha: d96c938e6ab18641b2bfced686fd3dc24320c857
+  specs:
+    postgresql (2.0.0)
+      locale (>= 0.0.0)
+
 DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
+  postgresql (>= 0)
   ruby_rbenv (>= 0)
   vim (>= 0)
   yarn (>= 0)
