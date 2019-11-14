@@ -24,8 +24,8 @@ gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-gem 'hiredis', '~> 0.6.3'
+# gem 'redis', '~> 4.0'
+# gem 'hiredis', '~> 0.6.3'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -61,7 +61,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # More gems
 gem 'slim-rails'
@@ -70,5 +70,5 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'jquery-rails'
 gem 'rails-assets-datetimepicker'
-gem 'whenever', '~> 0.9.4'
+# gem 'whenever', '~> 0.9.4'
 gem "aws-sdk-s3", require: false

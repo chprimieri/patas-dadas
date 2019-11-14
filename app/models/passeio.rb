@@ -15,14 +15,6 @@ class Passeio < ApplicationRecord
   scope :realizados, -> { ordenado.where(status: :realizado) }
   scope :cancelados, -> { ordenado.where(status: :cancelado) }
 
-  def mudanca_de_status
-    Passeio.agendados.each do |passeio|
-      if passeio.data_e_hora < Time.now()
-        passeio.status = "realizado"
-      end
-    end
-  end
-
   private
   	def confere_se_existe_cachorro
   		if cachorro_1.blank? && cachorro_2.blank? && cachorro_3.blank?
@@ -48,7 +40,6 @@ class Passeio < ApplicationRecord
       if data_e_hora.nil?
         errors.add(:data_e_hora, "não é válida.")
       else
-
         Passeio.agendados.each do |passeio_existente|
           # Primeiro testa se não é o mesmo passeio, para permitir edição
           if passeio_existente.id != self.id

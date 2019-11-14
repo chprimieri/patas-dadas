@@ -9,7 +9,7 @@ p
   = @passeio.status
 p
   strong Data e hora: 
-  = @passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
+  = l @passeio.data_e_hora.in_time_zone, format: :data_hora
 
 .ui.buttons
   = link_to 'Voltar', passeios_path, class: 'ui button'

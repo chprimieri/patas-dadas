@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
 	$('.datahora').datetimepicker
-	        format: 'd/m/Y H:i'
+	        format: 'd/m/Y H:i O'
 	        step: 30
 	        mask: true
   # Documentação do datetimepicker: https://xdsoft.net/jqplugins/datetimepicker/

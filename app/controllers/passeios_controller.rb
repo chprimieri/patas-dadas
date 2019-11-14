@@ -12,12 +12,15 @@ class PasseiosController < ApplicationController
   # GET /passeios
   # GET /passeios.json
   def index
+    atualizacao_de_status
+
     @passeios = Passeio.all
   end
 
   # GET /passeios/1
   # GET /passeios/1.json
   def show
+    byebug
   end
 
   # GET /passeios/new
@@ -36,6 +39,7 @@ class PasseiosController < ApplicationController
     @passeio.pessoa_id = current_user.id
 
     if @passeio.data_e_hora.present?
+      byebug
       if @passeio.data_e_hora > Time.now()
         # O passeio é agendado se o dia e hora forem no futuro
         @passeio.status = 0
@@ -81,6 +85,16 @@ class PasseiosController < ApplicationController
   end
 
   private
+    # roda toda a vez que o index é carregado, para atualizar passeios do passado para o status realizado
+    def atualizacao_de_status
+      Passeio.agendados.each do |passeio|
+        if passeio.data_e_hora < Time.zone.now()
+          passeio.status = "realizado"
+          passeio.save
+        end
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_passeio
       @passeio = Passeio.find(params[:id])
@@ -90,5 +104,4 @@ class PasseiosController < ApplicationController
     def passeio_params
       params.require(:passeio).permit(:cachorro_1_id, :cachorro_2_id, :cachorro_3_id, :status, :data_e_hora)
     end
-
 end
