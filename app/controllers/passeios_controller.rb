@@ -20,7 +20,6 @@ class PasseiosController < ApplicationController
   # GET /passeios/1
   # GET /passeios/1.json
   def show
-    byebug
   end
 
   # GET /passeios/new
@@ -39,7 +38,6 @@ class PasseiosController < ApplicationController
     @passeio.pessoa_id = current_user.id
 
     if @passeio.data_e_hora.present?
-      byebug
       if @passeio.data_e_hora > Time.now()
         # O passeio é agendado se o dia e hora forem no futuro
         @passeio.status = 0

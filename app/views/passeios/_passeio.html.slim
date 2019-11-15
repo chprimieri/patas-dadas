@@ -2,7 +2,7 @@ tr
   td = passeio.pessoa.nome
   td = confere_cachorros(passeio.cachorro_1, passeio.cachorro_2, passeio.cachorro_3)
   td = passeio.status
-  td = passeio.data_e_hora.strftime("%d-%m-%Y %H:%M")
+  td = l passeio.data_e_hora.in_time_zone, format: :data_hora
   td
     - if current_user == passeio.pessoa || administrador?
       = link_to 'Editar', edit_passeio_path(passeio), class: 'ui mini button'

@@ -38,7 +38,7 @@ class Passeio < ApplicationRecord
 
     def passeio_no_mesmo_horario
       if data_e_hora.nil?
-        errors.add(:data_e_hora, "não é válida.")
+        errors.add(:data_e_hora, "não foi selecionada.")
       else
         Passeio.agendados.each do |passeio_existente|
           # Primeiro testa se não é o mesmo passeio, para permitir edição

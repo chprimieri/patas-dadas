@@ -7,26 +7,31 @@
         - @passeio.errors.full_messages.each do |message|
           li = message
 
-  .three.fields
-    .required.field
-      = f.label :data_e_hora, 'Data e Hora'
-      = f.text_field :data_e_hora, class: :datahora, required: true, autocomplete: :off, value: data_formatada(f.object.data_e_hora), :selected => f.object.data_e_hora
-
-    - if @passeio.persisted?
+  .ui.three.column.grid.container
+    .column 
       .required.field
-        = f.label :status
-        = f.select :status, Passeio.status.keys.to_a, { include_blank: true }, class: 'ui fluid dropdown'
-  .three.fields
-    .required.field
-      = f.label :cachorro_1_id, 'Cachorro 1'
-      = f.select :cachorro_1_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_1_id), { include_blank: true }, class: 'ui fluid dropdown'
-    .field
-      = f.label :cachorro_2_id, 'Cachorro 2'
-      = f.select :cachorro_2_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_2_id), { include_blank: true }, class: 'ui fluid dropdown'
-    .field
-      = f.label :cachorro_3_id, 'Cachorro 3'
-      = f.select :cachorro_3_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_3_id), { include_blank: true }, class: 'ui fluid dropdown'
+        = f.label :data_e_hora, 'Data e Hora'
+        = f.text_field :data_e_hora, class: :datahora, autocomplete: :off, value: data_formatada(f.object.data_e_hora), data_e_hora: { mask: '00/00/0000 00:00' }, :selected => f.object.data_e_hora
 
-  .ui.buttons
-    = link_to 'Voltar', passeios_path, class: 'ui button'
-    = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
+      - if @passeio.persisted?
+        .required.field
+          = f.label :status
+          = f.select :status, Passeio.status.keys.to_a, { include_blank: true }, class: 'ui fluid dropdown'
+
+      .ui.buttons
+        = link_to 'Voltar', passeios_path, class: 'ui button'
+        = f.submit 'Salvar', class: 'ui primary button', data: { disable_with: 'Salvando...' }
+
+    .column
+      .required.field
+        = f.label :cachorro_1_id, 'Cachorro 1'
+        = f.select :cachorro_1_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_1_id), { include_blank: true }, class: 'ui fluid dropdown'
+      .field
+        = f.label :cachorro_2_id, 'Cachorro 2'
+        = f.select :cachorro_2_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_2_id), { include_blank: true }, class: 'ui fluid dropdown'
+      .field
+        = f.label :cachorro_3_id, 'Cachorro 3'
+        = f.select :cachorro_3_id, options_from_collection_for_select(Cachorro.passeadores, 'id', 'nome', :selected => f.object.cachorro_3_id), { include_blank: true }, class: 'ui fluid dropdown'
+
+
+  
